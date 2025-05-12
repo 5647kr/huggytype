@@ -1,13 +1,15 @@
 import styled from "styled-components";
 import Logo from "../assets/img/Logo.svg";
+import { Link } from "react-router-dom";
+
 
 
 export default function Header() {
   return (
     <HeaderWrap>
-      <a href="/home">
+      <Link to={"/"}>
         <img src={Logo} alt="포옹 타입 로고" />
-      </a>
+      </Link>
     </HeaderWrap>
   );
 }
@@ -15,9 +17,8 @@ export default function Header() {
 const HeaderWrap = styled.header`
   width: 390px;
   height: 80px;
-  position: fixed;
-  z-index: 999;
   padding: 20px;
+  margin-bottom: 80px;
   a {
     width: 40px;
     height: 100%;
