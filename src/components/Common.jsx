@@ -6,3 +6,9 @@ export const Title = styled.h2`
   font-weight: bold;
   color: var(--main-color);
 `
+
+export const Wrap = styled.main`
+  width: 100%;
+  height: calc(100% - 80px);
+  margin-top: 80px;
+`
