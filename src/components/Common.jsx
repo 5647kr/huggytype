@@ -9,6 +9,6 @@ export const Title = styled.h2`
 
 export const Wrap = styled.main`
   width: 100%;
-  height: calc(100% - 80px);
-  margin-top: 80px;
+  height: calc(100% - 160px);
+  padding: 0 40px;
 `

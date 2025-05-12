@@ -37,6 +37,11 @@ const GlobalStyle = createGlobalStyle`
     border-radius: 20px;
     font-weight: bold;
     font-size: 1.4rem;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  button:active {
+    box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
   }
 
   ol, ul {
