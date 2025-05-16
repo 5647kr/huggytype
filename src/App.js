@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GlobalStyle from "./style/GlobalStyle";
 import styled from "styled-components";
 import Home from "./pages/Home/Home";
+import MBTI from "./pages/Test/MBTI";
 
 
 
@@ -14,6 +15,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}/>
+          <Route path="/test" element={<MBTI />}/>
         </Routes>
       </BrowserRouter>
     </Wrap>
