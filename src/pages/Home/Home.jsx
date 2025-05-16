@@ -1,10 +1,7 @@
 import { Wrap, Title } from "../../components/Common";
 import Header from "../../components/Header";
-import Button from "../../components/Button";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import dogImg from "../../assets/img/골든_리트리버.webp"
-import catImg from "../../assets/img/러시안_블루.webp"
 
 
 
@@ -17,23 +14,19 @@ export default function Home() {
         <Title>나의 MBTI는?</Title>
         <p>나의 MBTI 성격 유형과 알맞는 유기묘와 유기견을 찾아<br />인생의 짝궁을 맺어보세요.</p>
         <div className="imgWrap">
-          <img src={dogImg} alt="골든 리트리버 아이콘" />
-          <img src={catImg} alt="러시안 블루 아이콘" />
+          <img src="/assets/img/골든_리트리버.webp" alt="골든 리트리버 아이콘" />
+          <img src="/assets/img/러시안_블루.webp" alt="러시안 블루 아이콘" />
         </div>
-          <Button>
-            <Link to={"/test"}>MBTI 테스트 시작하기</Link>
-          </Button>
+        <Link to={"/test"}>MBTI 테스트 시작하기</Link>
       </ContentWrap>
       <ContentWrap>
         <Title>내 짝궁은?</Title>
         <p>나와 가까운, 내가 좋아하는, 유기묘, 유기견을 찾아<br />인생의 짝궁을 맺어보세요.</p>
         <div className="imgWrap">
-          <img src={dogImg} alt="골든 리트리버 아이콘" />
-          <img src={catImg} alt="러시안 블루 아이콘" />
+          <img src="/assets/img/골든_리트리버.webp" alt="골든 리트리버 아이콘" />
+          <img src="/assets/img/러시안_블루.webp" alt="러시안 블루 아이콘" />
         </div>
-        <Button>
-          <Link to={"/search"}>내 짝궁 찾기</Link>
-        </Button>
+        <Link to={"/search"}>내 짝궁 찾기</Link>
       </ContentWrap>
     </Wrap>
     </>
@@ -62,10 +55,21 @@ const ContentWrap = styled.div`
     margin: 20px 0;
   }
   a {
+    border: none;
+    background-color: var(--action-color);
     color: var(--white-color);
-  }
-  button {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1.4rem;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     display: block;
     margin: 0 auto;
+    text-align: center;
+    width: fit-content;
+  }
+  a:active {
+    box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
   }
 `
