@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Logo from "../assets/img/Logo.svg";
 import { Link } from "react-router-dom";
 
 
@@ -8,7 +7,7 @@ export default function Header() {
   return (
     <HeaderWrap>
       <Link to={"/"}>
-        <img src={Logo} alt="포옹 타입 로고" />
+        <img src="/assets/img/Logo.svg" alt="포옹 타입 로고" />
       </Link>
     </HeaderWrap>
   );
