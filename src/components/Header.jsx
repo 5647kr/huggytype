@@ -14,7 +14,7 @@ export default function Header() {
 }
 
 const HeaderWrap = styled.header`
-  width: 390px;
+  width: 100%;
   height: 80px;
   padding: 20px;
   margin-bottom: 80px;
