@@ -54,7 +54,7 @@ export default function Test(props) {
     <article>
       <ProgressWrap>
         <Progress>
-          <Bar />
+          <Bar style={{width: `calc(100% / 12 * ${testNum})`}}/>
         </Progress>
         <strong>{testNum} / 12</strong>
       </ProgressWrap>
@@ -82,9 +82,6 @@ export default function Test(props) {
     </article>
   );
 }
-// 1. a, b버튼중 하나를 누르면 다음 질문과 다음 선택지가 나와야함
-// 2. a, b버튼을 누르면 진행바가 증가해야함
-// 3. a, b버튼을 누르면 어떤 타입인지 확인후 그 값을 증가해서 최종 mbti를 결정해야함
 
 const ProgressWrap = styled.div`
   strong {
@@ -104,7 +101,7 @@ const Progress = styled.div`
 `;
 
 const Bar = styled.div`
-  width: calc(100% / 12 * 1);
+  transition: width 0.3s ease;
   height: 20px;
   background-color: var(--main-color);
   border-radius: 20px;

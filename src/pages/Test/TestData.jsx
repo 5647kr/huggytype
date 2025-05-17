@@ -91,128 +91,128 @@ const testResult = [
     result: "ISTJ",
     content: "신중하고 책임감 있는 성향",
     animals: "불도그 & 브리티시 쇼트헤어",
-    dogImg: "../../assets/img/불도그.webp",
-    catImg: "../../assets/img/브리티시_쇼트헤어.webp"
+    dogImg: "/assets/img/불도그.webp",
+    catImg: "/assets/img/브리티시_쇼트헤어.webp"
   },
   {
     id: 2,
     result: "ISFJ",
     content: "따뜻하고 헌신적인 보호자 타입",
     animals: "말티즈 & 페르시안",
-    dogImg: "../../assets/img/불도그.webp",
-    catImg: "../../assets/img/브리티시_쇼트헤어.webp"
+    dogImg: "/assets/img/말티즈.webp",
+    catImg: "/assets/img/페르시안.webp"
   },
   {
     id: 3,
     result: "INFJ",
     content: "이상주의적이며 깊이 있는 감정 공유 선호",
     animals: "푸들 & 러시안 블루",
-    dogImg: "../../assets/img/불도그.webp",
-    catImg: "../../assets/img/브리티시_쇼트헤어.webp"
+    dogImg: "/assets/img/푸들.webp",
+    catImg: "/assets/img/러시안_블루.webp"
   },
   {
     id: 4,
     result: "INTJ",
     content: "전략적이며 혼자 있는 걸 즐김",
     animals: "웰시 코기 & 노르웨이 숲고양이",
-    dogImg: "../../assets/img/불도그.webp",
-    catImg: "../../assets/img/브리티시_쇼트헤어.webp"
+    dogImg: "/assets/img/웰시_코기.webp",
+    catImg: "/assets/img/노르웨이_숲고양이.webp"
   },
   {
     id: 5,
     result: "ISTP",
     content: "실용적이며 독립적인 탐험가",
     animals: "치와와 & 벵갈",
-    dogImg: "../../assets/img/불도그.webp",
-    catImg: "../../assets/img/브리티시_쇼트헤어.webp"
+    dogImg: "/assets/img/치와와.webp",
+    catImg: "/assets/img/벵갈.webp"
   },
   {
     id: 6,
     result: "ISFP",
     content: "감성적이고 조용한 예술가형",
     animals: "비숑 & 샴",
-    dogImg: "../../assets/img/불도그.webp",
-    catImg: "../../assets/img/브리티시_쇼트헤어.webp"
+    dogImg: "/assets/img/비숑.webp",
+    catImg: "/assets/img/샴.webp"
   },
   {
     id: 7,
     result: "INFP",
     content: "공감 능력이 뛰어나며 몽상가 기질",
     animals: "시추 & 스코티시 폴드",
-    dogImg: "../../assets/img/불도그.webp",
-    catImg: "../../assets/img/브리티시_쇼트헤어.webp"
+    dogImg: "/assets/img/시추.webp",
+    catImg: "/assets/img/스코티시_폴드.webp"
   },
   {
     id: 8,
     result: "INTP",
     content: "논리적이고 지적 호기심이 많은 유형",
     animals: "요크셔 테리어 & 코리안 숏헤어",
-    dogImg: "../../assets/img/불도그.webp",
-    catImg: "../../assets/img/브리티시_쇼트헤어.webp"
+    dogImg: "/assets/img/요크셔_테리어.webp",
+    catImg: "/assets/img/코리안_숏헤어.webp"
   },
   {
     id: 9,
     result: "ESTP",
     content: "즉흥적이고 활동적인 모험가",
     animals: "포메라니안 & 먼치킨",
-    dogImg: "../../assets/img/불도그.webp",
-    catImg: "../../assets/img/브리티시_쇼트헤어.webp"
+    dogImg: "/assets/img/포메라니안.webp",
+    catImg: "/assets/img/먼치킨.webp"
   },
   {
     id: 10,
     result: "ESFP",
     content: "사교적이고 에너지 넘치는 분위기 메이커",
     animals: "골든 리트리버 & 메인쿤",
-    dogImg: "../../assets/img/불도그.webp",
-    catImg: "../../assets/img/브리티시_쇼트헤어.webp"
+    dogImg: "/assets/img/골든_리트리버.webp",
+    catImg: "/assets/img/메인쿤.webp"
   },
   {
     id: 11,
     result: "ENFP",
     content: "열정적이고 창의적인 자유로운 영혼",
     animals: "푸들 & 러시안 블루",
-    dogImg: "../../assets/img/불도그.webp",
-    catImg: "../../assets/img/브리티시_쇼트헤어.webp"
+    dogImg: "/assets/img/푸들.webp",
+    catImg: "/assets/img/러시안_블루.webp"
   },
   {
     id: 12,
     result: "ENTP",
     content: "재치 있고 지적인 토론가",
     animals: "웰시 코기 & 벵갈",
-    dogImg: "../../assets/img/불도그.webp",
-    catImg: "../../assets/img/브리티시_쇼트헤어.webp"
+    dogImg: "/assets/img/웰시_코기.webp",
+    catImg: "/assets/img/벵갈.webp"
   },
   {
     id: 13,
     result: "ESTJ",
     content: "체계적이고 리더십 있는 관리자",
     animals: "불도그 & 페르시안",
-    dogImg: "../../assets/img/불도그.webp",
-    catImg: "../../assets/img/브리티시_쇼트헤어.webp"
+    dogImg: "/assets/img/불도그.webp",
+    catImg: "/assets/img/페르시안.webp"
   },
   {
     id: 14,
     result: "ESFJ",
     content: "사교적이고 책임감 있는 보살핌형",
     animals: "말티즈 & 스코티시 폴드",
-    dogImg: "../../assets/img/불도그.webp",
-    catImg: "../../assets/img/브리티시_쇼트헤어.webp"
+    dogImg: "/assets/img/말티즈.webp",
+    catImg: "/assets/img/스코티시_폴드.webp"
   },
   {
     id: 15,
     result: "ENFJ",
     content: "사람을 이끄는 따뜻한 리더",
     animals: "골든 리트리버 & 메인쿤",
-    dogImg: "../../assets/img/불도그.webp",
-    catImg: "../../assets/img/브리티시_쇼트헤어.webp"
+    dogImg: "/assets/img/골든_리트리버.webp",
+    catImg: "/assets/img/메인쿤.webp"
   },
   {
     id: 16,
     result: "ENTJ",
     content: "목표 지향적인 야망가",
     animals: "포메라니안 & 노르웨이 숲고양이",
-    dogImg: "../../assets/img/불도그.webp",
-    catImg: "../../assets/img/브리티시_쇼트헤어.webp"
+    dogImg: "/assets/img/포메라니안.webp",
+    catImg: "/assets/img/노르웨이_숲고양이.webp"
   },
 ];
 
