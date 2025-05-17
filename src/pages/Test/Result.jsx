@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { Title } from "../../components/Common";
 import styled from "styled-components";
 import { testResult } from "./TestData";
+import { Link } from "react-router-dom";
 
 export default function Result(props) {
   const resultItem = [];
@@ -10,6 +11,10 @@ export default function Result(props) {
       resultItem.push(item);
     }
   });
+
+  function resetTest() {
+    props.setDone(false);
+  }
 
   console.log(resultItem);
   return (
@@ -20,8 +25,8 @@ export default function Result(props) {
           <Fragment key={item.id}>
             <h3>{item.result}</h3>
             <ImgWrap>
-              <img src={item.dogImg} alt="" />
-              <img src={item.catImg} alt="" />
+              <img src={item.dogImg} alt={item.animals} />
+              <img src={item.catImg} alt={item.animals} />
             </ImgWrap>
             <strong>
               {item.content}
@@ -31,6 +36,17 @@ export default function Result(props) {
           </Fragment>
         );
       })}
+      <LinkWrap>
+        <Link to={"/findMyPet"}>강아지 짝궁 찾기</Link>
+        <Link to={"/findMyPet"}>고양이 짝궁 찾기</Link>
+      </LinkWrap>
+      <button
+        onClick={() => {
+          resetTest();
+        }}
+      >
+        다시 테스트 하기
+      </button>
     </ResultWrap>
   );
 }
@@ -49,10 +65,45 @@ const ResultWrap = styled.div`
   }
   strong {
     display: block;
-    font-size: 2.6rem;
+    font-size: 2.2rem;
+  }
+  img {
+    width: 200px;
+    vertical-align: top;
+  }
+  img:first-child {
+    transform: scaleX(-1);
+  }
+  button {
+    margin-top: 20px;
+    background-color: var(--main-color);
+    width: 100%;
+    display: block;
+    font-size: 2rem;
   }
 `;
 
 const ImgWrap = styled.div`
   margin-bottom: 40px;
+`;
+
+const LinkWrap = styled.div`
+  margin-top: 40px;
+  display: flex;
+  gap: 20px;
+  a {
+    flex-grow: 1;
+    border: none;
+    background-color: var(--action-color);
+    color: var(--white-color);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 2rem;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  a:active {
+    box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
 `;
