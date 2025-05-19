@@ -3,6 +3,7 @@ import GlobalStyle from "./style/GlobalStyle";
 import styled from "styled-components";
 import Home from "./pages/Home/Home";
 import MBTI from "./pages/Test/MBTI";
+import Search from "./pages/Search/Search";
 
 
 
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/test" element={<MBTI />}/>
+          <Route path="/search" element={<Search />} />
         </Routes>
       </BrowserRouter>
     </Wrap>
