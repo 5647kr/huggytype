@@ -4,6 +4,11 @@ import styled from 'styled-components'
 
 
 export default function TypeData(props) {
+  function clickItem(e) {
+    props.setIsClicked(true)
+    props.setPetType(e.target.textContent)
+  }
+
   return (
     <TypeSelect>
       {props.isDogType ? (
@@ -12,7 +17,7 @@ export default function TypeData(props) {
             return (
               <li key={item.id}>
                 <input type="radio" id={item.title} name='dogType'/>
-                <label htmlFor={item.title}>{item.title}</label>
+                <label htmlFor={item.title} onClick={(e) => {clickItem(e)}}>{item.title}</label>
               </li>
             )
           })}
@@ -23,7 +28,7 @@ export default function TypeData(props) {
             return (
               <li key={item.id}>
                 <input type="radio" id={item.title} name='catType'/>
-                <label htmlFor={item.title}>{item.title}</label>
+                <label htmlFor={item.title} onClick={(e) => {clickItem(e)}}>{item.title}</label>
               </li>
             )
           })}
@@ -38,7 +43,7 @@ const dogType = [
   {id: "dog2", title: "말티즈"},
   {id: "dog3", title: "불도그"},
   {id: "dog4", title: "비숑"},
-  {id: "dog5", title: "시추"},
+  {id: "dog5", title: "시츄"},
   {id: "dog6", title: "요크셔 테리어"},
   {id: "dog7", title: "웰시 코기"},
   {id: "dog8", title: "치와와"},
