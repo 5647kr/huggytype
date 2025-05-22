@@ -25,19 +25,12 @@ const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
-    color: var(--content-color);
+    display: block;
   }
 
   button {
     border: none;
-    background-color: var(--action-color);
-    color: var(--white-color);
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 1.4rem;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: transparent;
   }
 
   button:active {
