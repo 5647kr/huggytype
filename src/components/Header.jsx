@@ -17,7 +17,6 @@ const HeaderWrap = styled.header`
   width: 100%;
   height: 80px;
   padding: 20px;
-  margin-bottom: 40px;
   a {
     width: 40px;
     height: 100%;
