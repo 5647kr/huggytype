@@ -55,7 +55,7 @@ const ContentWrap = styled.div`
     left: 0;
     bottom: 0;
   }
-  img: last-child {
+  img:last-child {
     right: 0;
     top: 0;
   }
