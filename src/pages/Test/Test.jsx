@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { question } from "./TestData";
+import Button from '../../components/Button';
 
 export default function Test(props) {
   const [testNum, setTestNum] = useState(1);
@@ -64,20 +65,20 @@ export default function Test(props) {
       </Screen>
 
       <ButtonWrap>
-        <button
+        <Button
           onClick={() => {
             clickedA();
           }}
         >
           {testList[testNum - 1].A}
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => {
             clickedB();
           }}
         >
           {testList[testNum - 1].B}
-        </button>
+        </Button>
       </ButtonWrap>
     </article>
   );
