@@ -25,7 +25,21 @@ const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
+    background-color: var(--action-color);
+    color: var(--white-color);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1.4rem;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 0 auto;
+    text-align: center;
+    width: 200px;
     display: block;
+  }
+  a:active {
+    box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
   }
 
   button {

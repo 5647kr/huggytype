@@ -20,6 +20,10 @@ const HeaderWrap = styled.header`
   a {
     width: 40px;
     height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
   }
   img {
     vertical-align: top;
