@@ -48,7 +48,7 @@ const ContentWrap = styled.div`
   background-color: var(--sub-color);
   border-radius: 20px;
   padding: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   position: relative;
   img:first-child {
     transform: scaleX(-1);
