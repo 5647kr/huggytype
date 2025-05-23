@@ -16,8 +16,8 @@ export default function Home() {
       </IntroWrap>
       <ContentWrap>
         <Title>나의 MBTI는?</Title>
-        <p>나의 MBTI 성격 유형과 알맞는 유기묘와 유기견을 찾아<br />인생의 짝궁을 맺어보세요.</p>
-        <div className="imgWrap">
+        <p>나의 MBTI와 맞는 유기묘, 유기견을 찾아<br />인생의 짝궁을 맺어보세요.</p>
+        <div>
           <img src="/assets/img/골든_리트리버.webp" alt="골든 리트리버 아이콘" />
           <img src="/assets/img/러시안_블루.webp" alt="러시안 블루 아이콘" />
         </div>
@@ -48,16 +48,20 @@ const ContentWrap = styled.div`
   background-color: var(--sub-color);
   border-radius: 20px;
   padding: 20px;
-  margin-bottom: 40px;
-  .imgWrap {
-    display: flex;
-    justify-content: center;
-  }
+  margin-bottom: 20px;
+  position: relative;
   img:first-child {
     transform: scaleX(-1);
+    left: 0;
+    bottom: 0;
+  }
+  img: last-child {
+    right: 0;
+    top: 0;
   }
   img {
-    width: 8rem;
+    position: absolute;
+    width: 6rem;
     vertical-align: top;
   }
   p {
@@ -79,9 +83,7 @@ const ContentWrap = styled.div`
     text-align: center;
     width: 200px;
   }
-  a:active {
-    box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
-  }
+
 `
 
 const IntroWrap = styled(ContentWrap)`
