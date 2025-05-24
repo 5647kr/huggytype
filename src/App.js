@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Home from "./pages/Home/Home";
 import Test from "./pages/Test/Test";
 import Search from "./pages/Search/Search";
+import Result from "./pages/Result/Result";
 import FindMyPet from "./pages/FindMyPet/FindMyPet";
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Home />}/>
           <Route path="/test" element={<Test />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/result" element={<Result />} />
           <Route path="/findMyPet" element={<FindMyPet />} />
         </Routes>
       </BrowserRouter>
