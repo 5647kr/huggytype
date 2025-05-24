@@ -7,12 +7,12 @@ import { mbtiList } from "../../data/Data";
 
 export default function Search() {
   const [isClicked, setIsClicked] = useState(false);
-  const [petType, setPetType] = useState("");
+  const [mbti, setMbti] = useState("");
 
 
   function clickItem(e) {
     setIsClicked(true)
-    setPetType(e.target.textContent)
+    setMbti(e.target.textContent)
   }
 
   return (
@@ -36,7 +36,7 @@ export default function Search() {
             </ul>
           </TypeSelect>
 
-          {isClicked ? <Link to={"/result"} state={{petType}}>내 짝궁 찾기</Link> : <span className="disabled">내 짝궁 찾기</span> }
+          {isClicked ? <Link to={"/result"} state={{mbti}}>내 짝궁 찾기</Link> : <span className="disabled">내 짝궁 찾기</span> }
         </SearchWrap>
       </Wrap>
     </>
