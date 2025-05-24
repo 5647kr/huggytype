@@ -10,24 +10,20 @@ export default function Test(props) {
   const navigate = useNavigate();
   const [testNum, setTestNum] = useState(1);
   const testList = [...mbtiQuestion];
-  const [mbti, setMbti] = useState("");
   const [ei, setEi] = useState(0);
   const [ns, setNs] = useState(0);
   const [tf, setTf] = useState(0);
   const [jp, setJp] = useState(0);
 
   function nextQuestion() {
-    setTestNum(testNum + 1);
     if (testNum === 12) {
       resultMBTI();
-      navigate("/result", { state: { result: mbti } });
     } else {
-      return;
+      setTestNum(testNum + 1);
     }
   }
 
   function clickedA() {
-    nextQuestion();
     const type = testList[testNum - 1].type.toLowerCase();
     if (type === "ei") {
       setEi(ei + 1);
@@ -38,6 +34,8 @@ export default function Test(props) {
     } else {
       setJp(jp + 1);
     }
+
+    nextQuestion();
   }
 
   function clickedB() {
@@ -51,7 +49,7 @@ export default function Test(props) {
     result += tf >= 2 ? "T" : "F";
     result += jp >= 2 ? "J" : "P";
 
-    setMbti(result);
+    navigate("/result", { state: { mbti: result } });
   }
 
   return (
