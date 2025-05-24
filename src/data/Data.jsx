@@ -1,4 +1,4 @@
-const mbtiquestion = [
+const mbtiQuestion = [
   {
     id: 1,
     title: "주말에 에너지를 충전하는 가장 좋은 방법은 무엇인가요?",
@@ -216,4 +216,4 @@ const mbtiList = [
   },
 ];
 
-export { mbtiquestion, mbtiList };
+export { mbtiQuestion, mbtiList };
