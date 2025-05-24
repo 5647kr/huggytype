@@ -1,18 +1,18 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 import Header from "../../components/Header";
 import { Wrap, Title } from "../../components/Common";
-import styled from "styled-components";
-import TypeData from "./TypeData";
-import { Link } from "react-router-dom";
+import { mbtiList } from "../../data/Data";
 
 export default function Search() {
-  const [isDogType, setIsDogType] = useState(true);
   const [isClicked, setIsClicked] = useState(false);
   const [petType, setPetType] = useState("");
 
-  function typeSelected(e) {
-    const type = e.target.textContent;
-    type === "강아지" ? setIsDogType(true) : setIsDogType(false);
+
+  function clickItem(e) {
+    setIsClicked(true)
+    setPetType(e.target.textContent)
   }
 
   return (
@@ -20,38 +20,23 @@ export default function Search() {
       <Header />
       <Wrap>
         <SearchWrap>
-          <Title>짝궁 선택</Title>
-          <strong>품종 하나만 선택해주세요.</strong>
+          <Title>MBTI 선택</Title>
+          <strong>본인의 MBTI를 선택해주세요.</strong>
 
           <TypeSelect>
-            <input type="radio" id="dogType" name="type" defaultChecked />
-            <label
-              htmlFor="dogType"
-              onClick={(e) => {
-                typeSelected(e);
-              }}
-            >
-              강아지
-            </label>
-            <input type="radio" id="catType" name="type" />
-            <label
-              htmlFor="catType"
-              onClick={(e) => {
-                typeSelected(e);
-              }}
-            >
-              고양이
-            </label>
+            <ul>
+              {mbtiList.map((item) => {
+                return (
+                  <li key={item.id}>
+                    <input type="radio" id={item.title} name="mbtiList" />
+                    <label htmlFor={item.title} onClick={(e) => {clickItem(e)}}>{item.title}</label>
+                  </li>
+                );
+              })}
+            </ul>
           </TypeSelect>
 
-          <TypeData
-            isDogType={isDogType}
-            isClicked={isClicked}
-            setIsClicked={setIsClicked}
-            setPetType={setPetType}
-          />
-
-          {isClicked ? <Link to={"/findMyPet"} state={{petType}}>내 짝궁 찾기</Link> : <span className="disabled">내 짝궁 찾기</span> }
+          {isClicked ? <Link to={"/result"} state={{petType}}>내 짝궁 찾기</Link> : <span className="disabled">내 짝궁 찾기</span> }
         </SearchWrap>
       </Wrap>
     </>
@@ -82,15 +67,19 @@ const SearchWrap = styled.div`
   span {
     border: 1px solid var(--content-color);
     color: var(--content-color);
-    box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   }
 `;
 
 const TypeSelect = styled.div`
   margin: 20px 0 40px;
-  display: flex;
-  gap: 20px;
+  ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
   label {
+    display: block;
     width: 100%;
     padding: 10px;
     font-size: 1.4rem;
