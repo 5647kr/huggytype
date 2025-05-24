@@ -3,7 +3,6 @@ import GlobalStyle from "./style/GlobalStyle";
 import styled from "styled-components";
 import Home from "./pages/Home/Home";
 import Test from "./pages/Test/Test";
-// import MBTI from "./pages/Test/MBTI";
 import Search from "./pages/Search/Search";
 import FindMyPet from "./pages/FindMyPet/FindMyPet";
 
@@ -19,7 +18,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}/>
-          {/* <Route path="/test" element={<MBTI />}/> */}
           <Route path="/test" element={<Test />} />
           <Route path="/search" element={<Search />} />
           <Route path="/findMyPet" element={<FindMyPet />} />
