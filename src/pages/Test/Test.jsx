@@ -1,11 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { question } from "./TestData";
-import Button from '../../components/Button';
+import Header from "../../components/Header";
+import { Wrap } from "../../components/Common";
+import Button from "../../components/Button";
+import { mbtiQuestion } from "../../data/Data";
 
 export default function Test(props) {
+  const navigate = useNavigate();
   const [testNum, setTestNum] = useState(1);
-  const testList = [...question];
+  const testList = [...mbtiQuestion];
+  const [mbti, setMbti] = useState("");
   const [ei, setEi] = useState(0);
   const [ns, setNs] = useState(0);
   const [tf, setTf] = useState(0);
@@ -15,6 +20,7 @@ export default function Test(props) {
     setTestNum(testNum + 1);
     if (testNum === 12) {
       resultMBTI();
+      navigate("/result", { state: { result: mbti } });
     } else {
       return;
     }
@@ -44,43 +50,45 @@ export default function Test(props) {
     result += ns >= 2 ? "N" : "S";
     result += tf >= 2 ? "T" : "F";
     result += jp >= 2 ? "J" : "P";
-    
-    props.setMbti(result);
-    props.setDone(true);
+
+    setMbti(result);
   }
 
-
-
   return (
-    <article>
-      <ProgressWrap>
-        <Progress>
-          <Bar style={{width: `calc(100% / 12 * ${testNum})`}}/>
-        </Progress>
-        <strong>{testNum} / 12</strong>
-      </ProgressWrap>
+    <>
+      <Header />
+      <Wrap>
+        <article>
+          <ProgressWrap>
+            <Progress>
+              <Bar style={{ width: `calc(100% / 12 * ${testNum})` }} />
+            </Progress>
+            <strong>{testNum} / 12</strong>
+          </ProgressWrap>
 
-      <Screen>
-        <h2>{testList[testNum - 1].title}</h2>
-      </Screen>
+          <Screen>
+            <h2>{testList[testNum - 1].title}</h2>
+          </Screen>
 
-      <ButtonWrap>
-        <Button
-          onClick={() => {
-            clickedA();
-          }}
-        >
-          {testList[testNum - 1].A}
-        </Button>
-        <Button
-          onClick={() => {
-            clickedB();
-          }}
-        >
-          {testList[testNum - 1].B}
-        </Button>
-      </ButtonWrap>
-    </article>
+          <ButtonWrap>
+            <Button
+              onClick={() => {
+                clickedA();
+              }}
+            >
+              {testList[testNum - 1].A}
+            </Button>
+            <Button
+              onClick={() => {
+                clickedB();
+              }}
+            >
+              {testList[testNum - 1].B}
+            </Button>
+          </ButtonWrap>
+        </article>
+      </Wrap>
+    </>
   );
 }
 
