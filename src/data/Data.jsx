@@ -138,8 +138,8 @@ const mbtiList = [
     id: 7,
     title: "INFP",
     content: "공감 능력이 뛰어나며 몽상가 기질",
-    animals: "시추 & 스코티시 폴드",
-    dogImg: "/assets/img/시추.webp",
+    animals: "시츄 & 스코티시 폴드",
+    dogImg: "/assets/img/시츄.webp",
     catImg: "/assets/img/스코티시_폴드.webp"
   },
   {
