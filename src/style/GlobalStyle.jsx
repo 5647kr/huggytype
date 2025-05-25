@@ -17,6 +17,10 @@ const GlobalStyle = createGlobalStyle`
     background-color: var(--white-color);
   }
 
+  main::-webkit-scrollbar {
+    display: none;
+  }
+
   * {
     box-sizing: border-box;
     margin: 0;
