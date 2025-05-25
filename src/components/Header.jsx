@@ -25,6 +25,9 @@ const HeaderWrap = styled.header`
     background-color: transparent;
     box-shadow: none;
   }
+  a:active {
+    box-shadow: none;
+  }
   img {
     vertical-align: top;
   }
