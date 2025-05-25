@@ -22,7 +22,7 @@ export default function Result() {
       <Header />
       <Wrap>
         <ResultWrap>
-          <ResultTitle>MBTI 테스트 결과</ResultTitle>
+          <ResultTitle>나의 짝궁은?</ResultTitle>
           {resultItem.map((item) => {
             return (
               <Fragment key={item.id}>
@@ -60,14 +60,14 @@ const ResultWrap = styled.div`
   font-weight: bold;
   color: var(--main-color);
   h3 {
-    margin: 80px 0 40px;
+    margin: 40px 0;
   }
   strong {
     display: block;
-    font-size: 2.2rem;
+    font-size: 1.8rem;
   }
   img {
-    width: 200px;
+    width: 160px;
     vertical-align: top;
   }
   img:first-child {
@@ -108,5 +108,9 @@ const LinkWrap = styled.div`
   }
   a:first-child {
     grid-area: 1/1/2/3;
+  }
+  a:not(:first-child) {
+    background-color: var(--main-color);
+    font-size: 1.8rem;
   }
 `;
