@@ -90,8 +90,8 @@ const mbtiList = [
     id: 1,
     title: "ISTJ",
     content: "신중하고 책임감 있는 성향",
-    animals: "불도그 & 브리티시 쇼트헤어",
-    dogImg: "/assets/img/불도그.webp",
+    animals: "불독 & 브리티시 쇼트헤어",
+    dogImg: "/assets/img/불독.webp",
     catImg: "/assets/img/브리티시_쇼트헤어.webp"
   },
   {
@@ -186,8 +186,8 @@ const mbtiList = [
     id: 13,
     title: "ESTJ",
     content: "체계적이고 리더십 있는 관리자",
-    animals: "불도그 & 페르시안",
-    dogImg: "/assets/img/불도그.webp",
+    animals: "불독 & 페르시안",
+    dogImg: "/assets/img/불독.webp",
     catImg: "/assets/img/페르시안.webp"
   },
   {
