@@ -114,9 +114,9 @@ const mbtiList = [
     id: 4,
     title: "INTJ",
     content: "전략적이며 혼자 있는 걸 즐김",
-    animals: "웰시 코기 & 노르웨이 숲고양이",
+    animals: "웰시 코기 & 터키시 앙고라",
     dogImg: "/assets/img/웰시_코기.webp",
-    catImg: "/assets/img/노르웨이_숲고양이.webp"
+    catImg: "/assets/img/터키시_앙고라.webp"
   },
   {
     id: 5,
@@ -138,17 +138,17 @@ const mbtiList = [
     id: 7,
     title: "INFP",
     content: "공감 능력이 뛰어나며 몽상가 기질",
-    animals: "시츄 & 스코티시 폴드",
+    animals: "시츄 & 스코티시폴드",
     dogImg: "/assets/img/시츄.webp",
-    catImg: "/assets/img/스코티시_폴드.webp"
+    catImg: "/assets/img/스코티시폴드.webp"
   },
   {
     id: 8,
     title: "INTP",
     content: "논리적이고 지적 호기심이 많은 유형",
-    animals: "요크셔 테리어 & 코리안 숏헤어",
+    animals: "요크셔 테리어 & 아비시니안",
     dogImg: "/assets/img/요크셔_테리어.webp",
-    catImg: "/assets/img/코리안_숏헤어.webp"
+    catImg: "/assets/img/아비시니안.webp"
   },
   {
     id: 9,
@@ -194,9 +194,9 @@ const mbtiList = [
     id: 14,
     title: "ESFJ",
     content: "사교적이고 책임감 있는 보살핌형",
-    animals: "말티즈 & 스코티시 폴드",
+    animals: "말티즈 & 스코티시폴드",
     dogImg: "/assets/img/말티즈.webp",
-    catImg: "/assets/img/스코티시_폴드.webp"
+    catImg: "/assets/img/스코티시폴드.webp"
   },
   {
     id: 15,
@@ -210,9 +210,9 @@ const mbtiList = [
     id: 16,
     title: "ENTJ",
     content: "목표 지향적인 야망가",
-    animals: "포메라니안 & 노르웨이 숲고양이",
+    animals: "포메라니안 & 터키시 앙고라",
     dogImg: "/assets/img/포메라니안.webp",
-    catImg: "/assets/img/노르웨이_숲고양이.webp"
+    catImg: "/assets/img/터키시_앙고라.webp"
   },
 ];
 
