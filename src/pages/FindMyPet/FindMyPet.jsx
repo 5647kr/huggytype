@@ -15,7 +15,7 @@ export default function FindMyPet() {
     if (selectedPet.length > 0) {
       getPetListData(selectedPet);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedPet]);
 
   const baseImg = "/assets/img/";
@@ -35,12 +35,15 @@ export default function FindMyPet() {
           <PetList>
             {petList.map((pet) => (
               <li key={pet.ABDM_IDNTFY_NO}>
-                <Link to={`/findMyPet/${pet.ABDM_IDNTFY_NO}`}>
+                <Link
+                  to={`/findMyPet/${pet.ABDM_IDNTFY_NO}`}
+                  state={{ selectedPet }}
+                >
                   <ImgWrap>
                     {pet.SPECIES_NM.split(" ")[0] === "[개]" ? (
-                      <img src={dogImg} alt="" />
+                      <img src={dogImg} alt={pet.SPECIES_NM.split("] ")[1]} />
                     ) : (
-                      <img src={catImg} alt="" />
+                      <img src={catImg} alt={pet.SPECIES_NM.split("] ")[1]} />
                     )}
                   </ImgWrap>
                   <ContentWrap>
