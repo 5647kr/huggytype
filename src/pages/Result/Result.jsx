@@ -10,13 +10,13 @@ export default function Result() {
   const mbti = loc.state.mbti;
 
   const resultItem = [];
-  const pet = [];
+  const selectedPet = [];
 
   // eslint-disable-next-line array-callback-return
   mbtiList.find((item) => {
     if (item.title === mbti) {
       resultItem.push(item);
-      pet.push(...item.animals.split(" & "));
+      selectedPet.push(...item.animals.split(" & "));
     }
   });
 
@@ -43,7 +43,7 @@ export default function Result() {
             );
           })}
           <LinkWrap>
-            <Link to={"/findMyPet"} state={{ pet }}>
+            <Link to={"/findMyPet"} state={{ selectedPet }}>
               짝궁 찾기
             </Link>
             <Link to={"/test"}>MBTI 테스트하기</Link>
