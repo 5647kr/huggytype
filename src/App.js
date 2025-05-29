@@ -6,6 +6,7 @@ import Test from "./pages/Test/Test";
 import Search from "./pages/Search/Search";
 import Result from "./pages/Result/Result";
 import FindMyPet from "./pages/FindMyPet/FindMyPet";
+import FindMyPetDetail from "./pages/FindMyPet/Detail/FindMyPetDetail";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
           <Route path="/result" element={<Result />} />
           <Route path="/findMyPet" element={<Outlet />}>
             <Route path="" element={<FindMyPet />} />
-            {/* <Route path='findMyPet/:id' element={<MyPetDetail />} /> */}
+            <Route path=":id" element={<FindMyPetDetail />} />
           </Route>
         </Routes>
       </BrowserRouter>

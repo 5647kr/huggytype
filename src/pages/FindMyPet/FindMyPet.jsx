@@ -7,7 +7,7 @@ import { usePetListStore } from "../../store/UsePetListStore";
 
 export default function FindMyPet() {
   const loc = useLocation();
-  const selectedPet = loc.state.pet;
+  const selectedPet = loc.state.selectedPet;
 
   const { petList, getPetListData } = usePetListStore();
 
@@ -15,7 +15,7 @@ export default function FindMyPet() {
     if (selectedPet.length > 0) {
       getPetListData(selectedPet);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedPet]);
 
   const baseImg = "/assets/img/";
@@ -33,22 +33,25 @@ export default function FindMyPet() {
         </LinkWrap>
         {petList.length > 0 ? (
           <PetList>
-            {petList.map((pet) => (
+            {petList.map((pet, index) => (
               <li key={pet.ABDM_IDNTFY_NO}>
-                <Link to={`/findMyPet/${pet.ABDM_IDNTFY_NO}`}>
+                <Link
+                  to={`/findMyPet/${pet.ABDM_IDNTFY_NO}`}
+                  state={{ selectedPet }}
+                >
                   <ImgWrap>
                     {pet.SPECIES_NM.split(" ")[0] === "[개]" ? (
-                      <img src={dogImg} alt="" />
+                      <img src={dogImg} alt={pet.SPECIES_NM.split("] ")[1]} />
                     ) : (
-                      <img src={catImg} alt="" />
+                      <img src={catImg} alt={pet.SPECIES_NM.split("] ")[1]} />
                     )}
                   </ImgWrap>
                   <ContentWrap>
-                    <h2>{pet.SPECIES_NM.split("] ")[1]}</h2>
+                    <h2>{index + 1}. {pet.SPECIES_NM.split("] ")[1]}</h2>
                     <p>{pet.SHTER_NM}</p>
                     <PetInfo>
-                      <li>{pet.SEX_NM === "F" ? "암컷" : "수컷"}</li>
                       <li>{pet.AGE_INFO}</li>
+                      <li>{pet.SEX_NM === "F" ? "암컷" : "수컷"}</li>
                       <li>{pet.COLOR_NM}</li>
                     </PetInfo>
                   </ContentWrap>
