@@ -39,25 +39,57 @@ export default function FindMyPetDetail() {
         <Link to={"/findMyPet"} state={{ selectedPet }}>
           ◂ 다른 짝궁 찾기
         </Link>
-        <BasicInfo>
-          <InfoWrap>
-            <div>
-              <img src={myPet.IMAGE_COURS} alt="" />
-            </div>
-            <div>
-              <h2>기본 정보</h2>
-              <ul>
-                <li>생년월일: {myPet.AGE_INFO}</li>
-                <li>성별: {myPet.SEX_NM === "F" ? "암컷" : "수컷"}</li>
-                <li>색상: {myPet.COLOR_NM}</li>
-                <li>무게: {myPet.BDWGH_INFO}</li>
-                <li>중성화: {myPet.NEUT_YN === "Y" ? "⭕" : (myPet.NEUT_YN === "N" ? "❌" : "❓")}</li>
-                {/* <li>발견 위치: {myPet.DISCVRY_PLC_INFO}</li>
-                <li>특징: {myPet.SFETR_INFO}</li> */}
-              </ul>
-            </div>
-          </InfoWrap>
-        </BasicInfo>
+        <img src={myPet.IMAGE_COURS} alt={myPet.SPECIES_NM} />
+        <InfoWrap>
+          <table>
+            <tbody>
+              <tr>
+                <th>나이</th>
+                <td>{myPet.AGE_INFO}</td>
+                <th>무게</th>
+                <td>{myPet.BDWGH_INFO}</td>
+              </tr>
+              <tr>
+                <th>색상</th>
+                <td>{myPet.COLOR_NM}</td>
+                <th>중성화 여부</th>
+                <td>{myPet.NEUT_YN === "Y" ? "예" : (myPet.NEUT_YN === "N" ? "아니요" : "알 수 없음") }</td>
+              </tr>
+              <tr>
+                <th>발견위치</th>
+                <td colSpan="3">{myPet.DISCVRY_PLC_INFO}</td>
+              </tr>
+              <tr>
+                <td colSpan="4" className="map">
+                  <h2>지도 들어갈 곳</h2>
+                </td>
+              </tr>
+              <tr>
+                <th>보호소</th>
+                <td colSpan="3">{myPet.SHTER_NM}</td>
+              </tr>
+              <tr>
+                <th>보호소 주소</th>
+                <td colSpan="3">
+                  지번: {myPet.REFINE_LOTNO_ADDR}<br />
+                  도로명: {myPet.REFINE_ROADNM_ADDR}
+                </td>
+              </tr>
+              <tr>
+                <th>보호소 연락처</th>
+                <td colSpan="3">{myPet.SHTER_TELNO}</td>
+              </tr>
+              <tr>
+                <th>특징</th>
+                <td colSpan="3">{myPet.SFETR_INFO}</td>
+              </tr>
+              <tr>
+                <th>품종</th>
+                <td colSpan="3">{myPet.SPECIES_NM}</td>
+              </tr>
+            </tbody>
+          </table>
+        </InfoWrap>
       </DetailWrap>
     </>
   );
@@ -109,36 +141,41 @@ const DetailWrap = styled(Wrap)`
   & > a:active {
     box-shadow: none;
   }
-`
 
-const BasicInfo = styled.div`
-  margin-top: 40px;
-  h2 {
-    font-size: 1.8rem;
-    color: var(--content-color);
-    margin-bottom: 10px;
-  }
-  img {
+  & > img {
     width: 200px;
-    vertical-align: top;
+    display: block;
     border-radius: 20px;
     aspect-ratio: 1 / 1;
-    object-fit: cover;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    object-fit: cover;
+    margin: 20px auto 40px;
   }
-`;
+`
 
 const InfoWrap = styled.div`
-  display: flex;
-  gap: 40px;
-  li {
+  background-color: var(--sub-color);
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  table tbody tr {
+    border: 2px solid var(--bg-color);
+  }
+  table tbody th,
+  table tbody td {
+    padding: 10px;
+    font-size: 1.2rem;
     color: var(--content-color);
-    font-size: 1.6rem;
   }
-  li + li {
-    margin-top: 10px;
+  table tbody th {
+    border-right: 1px solid var(--bg-color);
+    border-left: 2px solid var(--bg-color);
+    font-size: 1.3rem;
+    width: 100px;
   }
-  & > div:last-child {
-    flex-grow: 1;
+
+  table tbody .map {
+    padding: 0;
   }
 `
