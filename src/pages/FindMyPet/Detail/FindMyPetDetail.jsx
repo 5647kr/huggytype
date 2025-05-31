@@ -4,6 +4,8 @@ import { usePetListStore } from "../../../store/UsePetListStore";
 import Header from "../../../components/Header";
 import { Wrap } from "../../../components/Common";
 import styled from "styled-components";
+import KakakoMap from "../../../components/KakakoMap";
+
 
 export default function FindMyPetDetail() {
   const params = useParams();
@@ -12,8 +14,6 @@ export default function FindMyPetDetail() {
   const { petList, getPetListData } = usePetListStore();
   const [myPet, setMyPet] = useState([]);
 
-  console.log(loc);
-  console.log("상세 loc.state.pet", selectedPet);
 
   useEffect(() => {
     if (petList.length === 0) {
@@ -30,7 +30,6 @@ export default function FindMyPetDetail() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [petList]);
 
-  console.log(myPet);
 
   return (
     <>
@@ -61,7 +60,7 @@ export default function FindMyPetDetail() {
               </tr>
               <tr>
                 <td colSpan="4" className="map">
-                  <h2>지도 들어갈 곳</h2>
+                  <KakakoMap lat={myPet.REFINE_WGS84_LAT} lng={myPet.REFINE_WGS84_LOGT}/>
                 </td>
               </tr>
               <tr>
@@ -85,7 +84,7 @@ export default function FindMyPetDetail() {
               </tr>
               <tr>
                 <th>품종</th>
-                <td colSpan="3">{myPet.SPECIES_NM}</td>
+                <td colSpan="3">{myPet.SPECIES_NM?.split(" ")[1]}</td>
               </tr>
             </tbody>
           </table>
