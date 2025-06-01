@@ -2,7 +2,9 @@ import React from "react";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 
 export default function KakakoMap(props) {
-  console.log(props)
+  // 새로고침시 지도가 안뜨는 문제 해결
+  if(!props.lat || !props.lng) return null;
+
   return (
     <Map
       center={{ lat: props.lat, lng: props.lng }}
