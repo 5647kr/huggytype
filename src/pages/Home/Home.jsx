@@ -18,8 +18,8 @@ export default function Home() {
         <Title>나의 MBTI는?</Title>
         <p>나의 MBTI와 맞는 유기묘, 유기견을 찾아<br />인생의 짝궁을 맺어보세요.</p>
         <div>
-          <img src="/assets/img/골든_리트리버.webp" alt="골든 리트리버 아이콘" />
-          <img src="/assets/img/러시안_블루.webp" alt="러시안 블루 아이콘" />
+          <img src={`${process.env.PUBLIC_URL}/assets/img/골든_리트리버.webp`} alt="골든 리트리버 아이콘" />
+          <img src={`${process.env.PUBLIC_URL}/assets/img/러시안_블루.webp`} alt="러시안 블루 아이콘" />
         </div>
         <Link to={"/test"}>MBTI 테스트 시작하기</Link>
       </ContentWrap>
@@ -27,8 +27,8 @@ export default function Home() {
         <Title>내 짝궁은?</Title>
         <p>MBTI를 알고 있다면, <br />바로 인생 짝궁을 맺어보세요.</p>
         <div className="imgWrap">
-          <img src="/assets/img/골든_리트리버.webp" alt="골든 리트리버 아이콘" />
-          <img src="/assets/img/러시안_블루.webp" alt="러시안 블루 아이콘" />
+          <img src={`${process.env.PUBLIC_URL}/assets/img/골든_리트리버.webp`} alt="골든 리트리버 아이콘" />
+          <img src={`${process.env.PUBLIC_URL}/assets/img/러시안_블루.webp`} alt="러시안 블루 아이콘" />
         </div>
         <Link to={"/search"}>내 짝궁 찾기</Link>
       </ContentWrap>
@@ -87,7 +87,7 @@ const ContentWrap = styled.div`
 `
 
 const IntroWrap = styled(ContentWrap)`
-  background: url("../../assets/img/home_bg.webp") no-repeat 50% 0 / 80%;
+  background: url(${() => `${process.env.PUBLIC_URL}/assets/img/home_bg.webp`}) no-repeat 50% 0 / 80%;
   padding: 0;
   margin: 0;
   height: 200px;
