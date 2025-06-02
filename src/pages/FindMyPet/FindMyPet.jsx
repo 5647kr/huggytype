@@ -18,7 +18,7 @@ export default function FindMyPet() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedPet]);
 
-  const baseImg = "/assets/img/";
+  const baseImg = `${process.env.PUBLIC_URL}/assets/img/`;
   const dogImg = baseImg + selectedPet[0].replace(" ", "_") + ".webp";
   const catImg = baseImg + selectedPet[1].replace(" ", "_") + ".webp";
 
