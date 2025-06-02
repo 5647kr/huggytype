@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <HeaderWrap>
       <Link to={"/"}>
-        <img src="/assets/img/Logo.svg" alt="포옹 타입 로고" />
+        <img src={`${process.env.PUBLIC_URL}/assets/img/Logo.svg`} alt="포옹 타입 로고" />
       </Link>
     </HeaderWrap>
   );
