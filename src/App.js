@@ -1,10 +1,12 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import GlobalStyle from "./style/GlobalStyle";
 import styled from "styled-components";
 import Home from "./pages/Home/Home";
-
-
-
+import Test from "./pages/Test/Test";
+import Search from "./pages/Search/Search";
+import Result from "./pages/Result/Result";
+import FindMyPet from "./pages/FindMyPet/FindMyPet";
+import FindMyPetDetail from "./pages/FindMyPet/Detail/FindMyPetDetail";
 
 function App() {
   return (
@@ -13,7 +15,14 @@ function App() {
 
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />}/>
+          <Route path="/" element={<Home />} />
+          <Route path="/test" element={<Test />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/result" element={<Result />} />
+          <Route path="/findMyPet" element={<Outlet />}>
+            <Route path="" element={<FindMyPet />} />
+            <Route path=":id" element={<FindMyPetDetail />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </Wrap>
