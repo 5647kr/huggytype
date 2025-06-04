@@ -26,41 +26,66 @@ export default function FindMyPet() {
     <>
       <Header />
       <Wrap>
-        <CenterTitle>나의 짝궁</CenterTitle>
-        <LinkWrap>
-          <Link to={"/search"}>MBTI 변경하기</Link>
-          <Link to={"/test"}>MBTI 테스트 하기</Link>
-        </LinkWrap>
         {petList.length > 0 ? (
-          <PetList>
-            {petList.map((pet, index) => (
-              <li key={pet.ABDM_IDNTFY_NO}>
-                <Link
-                  to={`/findMyPet/${pet.ABDM_IDNTFY_NO}`}
-                  state={{ selectedPet }}
-                >
-                  <ImgWrap>
-                    {pet.SPECIES_NM.split(" ")[0] === "[개]" ? (
-                      <img src={dogImg} alt={pet.SPECIES_NM.split("] ")[1]} />
-                    ) : (
-                      <img src={catImg} alt={pet.SPECIES_NM.split("] ")[1]} />
-                    )}
-                  </ImgWrap>
-                  <ContentWrap>
-                    <h2>{index + 1}. {pet.SPECIES_NM.split("] ")[1]}</h2>
-                    <p>{pet.SHTER_NM}</p>
-                    <PetInfo>
-                      <li>{pet.AGE_INFO}</li>
-                      <li>{pet.SEX_NM === "F" ? "암컷" : "수컷"}</li>
-                      <li>{pet.COLOR_NM}</li>
-                    </PetInfo>
-                  </ContentWrap>
-                </Link>
-              </li>
-            ))}
-          </PetList>
+          <>
+            <CenterTitle>나의 짝궁</CenterTitle>
+            <LinkWrap>
+              <Link to={"/search"}>MBTI 변경하기</Link>
+              <Link to={"/test"}>MBTI 테스트 하기</Link>
+            </LinkWrap>
+            <PetList>
+              {petList.map((pet, index) => (
+                <li key={pet.ABDM_IDNTFY_NO}>
+                  <Link
+                    to={`/findMyPet/${pet.ABDM_IDNTFY_NO}`}
+                    state={{
+                      selectedPet
+                    }}
+                  >
+                    <ImgWrap>
+                      {pet.SPECIES_NM.split(" ")[0] === "[개]" ? (
+                        <img src={dogImg} alt={pet.SPECIES_NM.split("] ")[1]} />
+                      ) : (
+                        <img src={catImg} alt={pet.SPECIES_NM.split("] ")[1]} />
+                      )}
+                    </ImgWrap>
+                    <ContentWrap>
+                      <h2>
+                        {index + 1}. {pet.SPECIES_NM.split("] ")[1]}
+                      </h2>
+                      <p>{pet.SHTER_NM}</p>
+                      <PetInfo>
+                        <li>{pet.AGE_INFO}</li>
+                        <li>{pet.SEX_NM === "F" ? "암컷" : "수컷"}</li>
+                        <li>{pet.COLOR_NM}</li>
+                      </PetInfo>
+                    </ContentWrap>
+                  </Link>
+                </li>
+              ))}
+            </PetList>
+          </>
         ) : (
-          <p>불러오는 중...</p>
+          <>
+            <LoadingWrap>
+              <strong>
+                <span>짝</span>
+                <span>궁</span>
+                <span>&nbsp;</span>
+                <span>찾</span>
+                <span>는 </span>
+                <span>&nbsp;</span>
+                <span>중</span>
+                <span>.</span>
+                <span>.</span>
+                <span>.</span>
+              </strong>
+              <img
+                src={`${process.env.PUBLIC_URL}/assets/img/loading.webp`}
+                alt="로딩중"
+              />
+            </LoadingWrap>
+          </>
         )}
       </Wrap>
     </>
@@ -129,5 +154,65 @@ const PetInfo = styled.ul`
     margin-bottom: 0;
     font-size: 1rem;
     border-radius: 4px;
+  }
+`;
+
+const LoadingWrap = styled.div`
+  margin-top: 200px;
+  strong {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--content-color);
+    display: block;
+  }
+  span {
+    animation: wave 0.5s ease-in-out infinite;
+    display: inline-block;
+  }
+
+  @keyframes wave {
+    0%,
+    40%,
+    100% {
+      transform: translateY(0);
+    }
+    20% {
+      transform: translateY(-15px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+
+  span:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  span:nth-child(2) {
+    animation-delay: 0.13s;
+  }
+  span:nth-child(3) {
+    animation-delay: 0.16s;
+  }
+  span:nth-child(4) {
+    animation-delay: 0.19s;
+  }
+  span:nth-child(5) {
+    animation-delay: 0.22s;
+  }
+  span:nth-child(6) {
+    animation-delay: 0.25s;
+  }
+  span:nth-child(7) {
+    animation-delay: 0.28s;
+  }
+  span:nth-child(8) {
+    animation-delay: 0.31s;
+  }
+  span:nth-child(9) {
+    animation-delay: 0.34s;
+  }
+  span:nth-child(10) {
+    animation-delay: 0.37s;
   }
 `;

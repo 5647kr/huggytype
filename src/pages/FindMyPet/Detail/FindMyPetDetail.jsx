@@ -6,7 +6,6 @@ import { Wrap } from "../../../components/Common";
 import styled from "styled-components";
 import KakakoMap from "../../../components/KakakoMap";
 
-
 export default function FindMyPetDetail() {
   const params = useParams();
   const loc = useLocation();
@@ -28,6 +27,7 @@ export default function FindMyPetDetail() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [petList]);
+
 
   return (
     <>
@@ -53,7 +53,13 @@ export default function FindMyPetDetail() {
                     <th>색상</th>
                     <td>{myPet.COLOR_NM}</td>
                     <th>중성화 여부</th>
-                    <td>{myPet.NEUT_YN === "Y" ? "예" : (myPet.NEUT_YN === "N" ? "아니요" : "알 수 없음") }</td>
+                    <td>
+                      {myPet.NEUT_YN === "Y"
+                        ? "예"
+                        : myPet.NEUT_YN === "N"
+                        ? "아니요"
+                        : "알 수 없음"}
+                    </td>
                   </tr>
                   <tr>
                     <th>발견위치</th>
@@ -61,7 +67,10 @@ export default function FindMyPetDetail() {
                   </tr>
                   <tr>
                     <td colSpan="4" className="map">
-                      <KakakoMap lat={myPet.REFINE_WGS84_LAT} lng={myPet.REFINE_WGS84_LOGT}/>
+                      <KakakoMap
+                        lat={myPet.REFINE_WGS84_LAT}
+                        lng={myPet.REFINE_WGS84_LOGT}
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -71,7 +80,8 @@ export default function FindMyPetDetail() {
                   <tr>
                     <th>보호소 주소</th>
                     <td colSpan="3">
-                      지번: {myPet.REFINE_LOTNO_ADDR}<br />
+                      지번: {myPet.REFINE_LOTNO_ADDR}
+                      <br />
                       도로명: {myPet.REFINE_ROADNM_ADDR}
                     </td>
                   </tr>
@@ -94,12 +104,15 @@ export default function FindMyPetDetail() {
         ) : (
           // 데이터가 없을때
           <>
-            <LoadingImg />
+            <LoadingImg>
+              <img
+                src={`${process.env.PUBLIC_URL}/assets/img/loading.webp`}
+                alt="나의 펫 사진 불러오는 중"
+              />
+            </LoadingImg>
             <LoadingBox />
           </>
-        ) 
-      }
-
+        )}
       </DetailWrap>
     </>
   );
@@ -130,7 +143,7 @@ const DetailWrap = styled(Wrap)`
     object-fit: cover;
     margin: 20px auto 40px;
   }
-`
+`;
 
 const InfoWrap = styled.div`
   background-color: var(--sub-color);
@@ -157,19 +170,22 @@ const InfoWrap = styled.div`
   table tbody .map {
     padding: 0;
   }
-`
+`;
 
 const LoadingImg = styled.div`
   width: 200px;
   aspect-ratio: 1 / 1;
-  background-color: var(--sub-color);
   border-radius: 20px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   margin: 20px auto 40px;
-`
+  img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+`;
 
 const LoadingBox = styled.div`
   width: 100%;
   height: 450px;
   background-color: var(--sub-color);
-`
+`;
