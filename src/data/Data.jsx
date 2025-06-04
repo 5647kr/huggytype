@@ -91,128 +91,128 @@ const mbtiList = [
     title: "ISTJ",
     content: "신중하고 책임감 있는 성향",
     animals: "불독 & 브리티시 쇼트헤어",
-    dogImg: "/assets/img/불독.webp",
-    catImg: "/assets/img/브리티시_쇼트헤어.webp"
+    dogImg: `${process.env.PUBLIC_URL}/assets/img/불독.webp`,
+    catImg: `${process.env.PUBLIC_URL}/assets/img/브리티시_쇼트헤어.webp`
   },
   {
     id: 2,
     title: "ISFJ",
     content: "따뜻하고 헌신적인 보호자 타입",
     animals: "말티즈 & 페르시안",
-    dogImg: "/assets/img/말티즈.webp",
-    catImg: "/assets/img/페르시안.webp"
+    dogImg: `${process.env.PUBLIC_URL}/assets/img/말티즈.webp`,
+    catImg: `${process.env.PUBLIC_URL}/assets/img/페르시안.webp`
   },
   {
     id: 3,
     title: "INFJ",
     content: "이상주의적이며 깊이 있는 감정 공유 선호",
     animals: "푸들 & 러시안 블루",
-    dogImg: "/assets/img/푸들.webp",
-    catImg: "/assets/img/러시안_블루.webp"
+    dogImg: `${process.env.PUBLIC_URL}/assets/img/푸들.webp`,
+    catImg: `${process.env.PUBLIC_URL}/assets/img/러시안_블루.webp`
   },
   {
     id: 4,
     title: "INTJ",
     content: "전략적이며 혼자 있는 걸 즐김",
     animals: "웰시 코기 & 터키시 앙고라",
-    dogImg: "/assets/img/웰시_코기.webp",
-    catImg: "/assets/img/터키시_앙고라.webp"
+    dogImg: `${process.env.PUBLIC_URL}/assets/img/웰시_코기.webp`,
+    catImg: `${process.env.PUBLIC_URL}/assets/img/터키시_앙고라.webp`
   },
   {
     id: 5,
     title: "ISTP",
     content: "실용적이며 독립적인 탐험가",
     animals: "치와와 & 벵갈",
-    dogImg: "/assets/img/치와와.webp",
-    catImg: "/assets/img/벵갈.webp"
+    dogImg: `${process.env.PUBLIC_URL}/assets/img/치와와.webp`,
+    catImg: `${process.env.PUBLIC_URL}/assets/img/벵갈.webp`
   },
   {
     id: 6,
     title: "ISFP",
     content: "감성적이고 조용한 예술가형",
     animals: "비숑 & 샴",
-    dogImg: "/assets/img/비숑.webp",
-    catImg: "/assets/img/샴.webp"
+    dogImg: `${process.env.PUBLIC_URL}/assets/img/비숑.webp`,
+    catImg: `${process.env.PUBLIC_URL}/assets/img/샴.webp`
   },
   {
     id: 7,
     title: "INFP",
     content: "공감 능력이 뛰어나며 몽상가 기질",
     animals: "시츄 & 스코티시폴드",
-    dogImg: "/assets/img/시츄.webp",
-    catImg: "/assets/img/스코티시폴드.webp"
+    dogImg: `${process.env.PUBLIC_URL}/assets/img/시츄.webp`,
+    catImg: `${process.env.PUBLIC_URL}/assets/img/스코티시폴드.webp`
   },
   {
     id: 8,
     title: "INTP",
     content: "논리적이고 지적 호기심이 많은 유형",
     animals: "요크셔 테리어 & 아비시니안",
-    dogImg: "/assets/img/요크셔_테리어.webp",
-    catImg: "/assets/img/아비시니안.webp"
+    dogImg: `${process.env.PUBLIC_URL}/assets/img/요크셔_테리어.webp`,
+    catImg: `${process.env.PUBLIC_URL}/assets/img/아비시니안.webp`
   },
   {
     id: 9,
     title: "ESTP",
     content: "즉흥적이고 활동적인 모험가",
     animals: "포메라니안 & 먼치킨",
-    dogImg: "/assets/img/포메라니안.webp",
-    catImg: "/assets/img/먼치킨.webp"
+    dogImg: `${process.env.PUBLIC_URL}/assets/img/포메라니안.webp`,
+    catImg: `${process.env.PUBLIC_URL}/assets/img/먼치킨.webp`
   },
   {
     id: 10,
     title: "ESFP",
     content: "사교적이고 에너지 넘치는 분위기 메이커",
     animals: "골든 리트리버 & 메인쿤",
-    dogImg: "/assets/img/골든_리트리버.webp",
-    catImg: "/assets/img/메인쿤.webp"
+    dogImg: `${process.env.PUBLIC_URL}/assets/img/골든_리트리버.webp`,
+    catImg: `${process.env.PUBLIC_URL}/assets/img/메인쿤.webp`
   },
   {
     id: 11,
     title: "ENFP",
     content: "열정적이고 창의적인 자유로운 영혼",
     animals: "푸들 & 러시안 블루",
-    dogImg: "/assets/img/푸들.webp",
-    catImg: "/assets/img/러시안_블루.webp"
+    dogImg: `${process.env.PUBLIC_URL}/assets/img/푸들.webp`,
+    catImg: `${process.env.PUBLIC_URL}/assets/img/러시안_블루.webp`
   },
   {
     id: 12,
     title: "ENTP",
     content: "재치 있고 지적인 토론가",
     animals: "웰시 코기 & 벵갈",
-    dogImg: "/assets/img/웰시_코기.webp",
-    catImg: "/assets/img/벵갈.webp"
+    dogImg: `${process.env.PUBLIC_URL}/assets/img/웰시_코기.webp`,
+    catImg: `${process.env.PUBLIC_URL}/assets/img/벵갈.webp`
   },
   {
     id: 13,
     title: "ESTJ",
     content: "체계적이고 리더십 있는 관리자",
     animals: "불독 & 페르시안",
-    dogImg: "/assets/img/불독.webp",
-    catImg: "/assets/img/페르시안.webp"
+    dogImg: `${process.env.PUBLIC_URL}/assets/img/불독.webp`,
+    catImg: `${process.env.PUBLIC_URL}/assets/img/페르시안.webp`
   },
   {
     id: 14,
     title: "ESFJ",
     content: "사교적이고 책임감 있는 보살핌형",
     animals: "말티즈 & 스코티시폴드",
-    dogImg: "/assets/img/말티즈.webp",
-    catImg: "/assets/img/스코티시폴드.webp"
+    dogImg: `${process.env.PUBLIC_URL}/assets/img/말티즈.webp`,
+    catImg: `${process.env.PUBLIC_URL}/assets/img/스코티시폴드.webp`
   },
   {
     id: 15,
     title: "ENFJ",
     content: "사람을 이끄는 따뜻한 리더",
     animals: "골든 리트리버 & 메인쿤",
-    dogImg: "/assets/img/골든_리트리버.webp",
-    catImg: "/assets/img/메인쿤.webp"
+    dogImg: `${process.env.PUBLIC_URL}/assets/img/골든_리트리버.webp`,
+    catImg: `${process.env.PUBLIC_URL}/assets/img/메인쿤.webp`
   },
   {
     id: 16,
     title: "ENTJ",
     content: "목표 지향적인 야망가",
     animals: "포메라니안 & 터키시 앙고라",
-    dogImg: "/assets/img/포메라니안.webp",
-    catImg: "/assets/img/터키시_앙고라.webp"
+    dogImg: `${process.env.PUBLIC_URL}/assets/img/포메라니안.webp`,
+    catImg: `${process.env.PUBLIC_URL}/assets/img/터키시_앙고라.webp`
   },
 ];
 
