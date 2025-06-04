@@ -38,7 +38,9 @@ export default function FindMyPet() {
                 <li key={pet.ABDM_IDNTFY_NO}>
                   <Link
                     to={`/findMyPet/${pet.ABDM_IDNTFY_NO}`}
-                    state={{ selectedPet }}
+                    state={{
+                      selectedPet
+                    }}
                   >
                     <ImgWrap>
                       {pet.SPECIES_NM.split(" ")[0] === "[개]" ? (
@@ -78,7 +80,10 @@ export default function FindMyPet() {
                 <span>.</span>
                 <span>.</span>
               </strong>
-              <img src={`${process.env.PUBLIC_URL}/assets/img/loading.webp`} alt="로딩중" />
+              <img
+                src={`${process.env.PUBLIC_URL}/assets/img/loading.webp`}
+                alt="로딩중"
+              />
             </LoadingWrap>
           </>
         )}
@@ -167,19 +172,47 @@ const LoadingWrap = styled.div`
   }
 
   @keyframes wave {
-      0%, 40%, 100% {transform: translateY(0);}
-      20%{transform: translateY(-15px);}
-      60%{transform: translateY(-5px);}
+    0%,
+    40%,
+    100% {
+      transform: translateY(0);
+    }
+    20% {
+      transform: translateY(-15px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
   }
 
-  span:nth-child(1) {animation-delay: 0.1s;}
-  span:nth-child(2) {animation-delay: 0.13s;}
-  span:nth-child(3) {animation-delay: 0.16s;}
-  span:nth-child(4) {animation-delay: 0.19s;}
-  span:nth-child(5) {animation-delay: 0.22s;}
-  span:nth-child(6) {animation-delay: 0.25s;}
-  span:nth-child(7) {animation-delay: 0.28s;}
-  span:nth-child(8) {animation-delay: 0.31s;}
-  span:nth-child(9) {animation-delay: 0.34s;}
-  span:nth-child(10) {animation-delay: 0.37s;}
-`
+  span:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  span:nth-child(2) {
+    animation-delay: 0.13s;
+  }
+  span:nth-child(3) {
+    animation-delay: 0.16s;
+  }
+  span:nth-child(4) {
+    animation-delay: 0.19s;
+  }
+  span:nth-child(5) {
+    animation-delay: 0.22s;
+  }
+  span:nth-child(6) {
+    animation-delay: 0.25s;
+  }
+  span:nth-child(7) {
+    animation-delay: 0.28s;
+  }
+  span:nth-child(8) {
+    animation-delay: 0.31s;
+  }
+  span:nth-child(9) {
+    animation-delay: 0.34s;
+  }
+  span:nth-child(10) {
+    animation-delay: 0.37s;
+  }
+`;
