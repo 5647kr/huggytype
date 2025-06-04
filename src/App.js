@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route, Outlet, HashRouter } from "react-router-dom";
 import GlobalStyle from "./style/GlobalStyle";
 import styled from "styled-components";
 import Home from "./pages/Home/Home";
@@ -13,7 +13,7 @@ function App() {
     <Wrap>
       <GlobalStyle />
 
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <HashRouter basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/test" element={<Test />} />
@@ -24,7 +24,7 @@ function App() {
             <Route path=":id" element={<FindMyPetDetail />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </Wrap>
   );
 }
