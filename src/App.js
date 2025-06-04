@@ -10,7 +10,7 @@ import FindMyPetDetail from "./pages/FindMyPet/Detail/FindMyPetDetail";
 
 function App() {
   return (
-    <HashRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter>
       <Wrap>
         <GlobalStyle />
 
