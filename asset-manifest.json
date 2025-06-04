@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/huggytype/static/css/main.8c236fd3.css",
-    "main.js": "/huggytype/static/js/main.30edf051.js",
+    "main.js": "/huggytype/static/js/main.b05e1af1.js",
     "index.html": "/huggytype/index.html",
-    "main.30edf051.js.map": "/huggytype/static/js/main.30edf051.js.map"
+    "main.b05e1af1.js.map": "/huggytype/static/js/main.b05e1af1.js.map"
   },
   "entrypoints": [
     "static/css/main.8c236fd3.css",
-    "static/js/main.30edf051.js"
+    "static/js/main.b05e1af1.js"
   ]
 }
