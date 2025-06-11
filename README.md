@@ -1,4 +1,4 @@
-# MeowCastle
+# HuggyType
 
 
 
@@ -8,8 +8,10 @@
 2.  [기술 개발 구현](#2-기술-개발-구현)
 3.  [기술 스택](#3-기술-스택)
 4.  [코딩 컨벤션](#4-코딩-컨벤션)
-5.  [미래 개선 방향](#5-미래-개선-방향)
-6.  [성과 및 느낀 점](#6-성과-및-느낀-점)
+5.  [시연 이미지](#5-시연-이미지)
+6.  [폴더 구조](#6-폴더-구조)
+7.  [미래 개선 방향](#7-미래-개선-방향)
+8.  [성과 및 느낀 점](#8-성과-및-느낀-점)
 <br>
 
 ## 1. 프로젝트 소개
@@ -126,6 +128,7 @@ export const usePetListStore = create((set) => ({
 
 ```
 <br>
+<br>
 
 ## 3. 기술 스택
 
@@ -138,7 +141,6 @@ export const usePetListStore = create((set) => ({
       <img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white"/>&nbsp 
       <img src="https://img.shields.io/badge/axios-7F2B7B?style=for-the-badge&logo=axios&logoColor=white"/>&nbsp 
       <img src="https://img.shields.io/badge/zustand-2c51c1?style=for-the-badge&logo=zustand&logoColor=white"/>&nbsp 
-      <img src="https://img.shields.io/badge/kakaoMap-FFCD00?style=for-the-badge&logo=kakao&logoColor=white"/>&nbsp 
     </td>
   </tr>
   <tr>
@@ -146,6 +148,12 @@ export const usePetListStore = create((set) => ({
     <td>
       <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"/>&nbsp 
       <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+    </td>
+  <tr>
+  <tr>
+    <td align="center">API</td>
+    <td>
+      <img src="https://img.shields.io/badge/kakaoMap-FFCD00?style=for-the-badge&logo=kakao&logoColor=white"/>&nbsp &nbsp
     </td>
   <tr>
     <td align="center">디자인</td>
@@ -229,7 +237,72 @@ export const usePetListStore = create((set) => ({
 <br>
 <br>
 
-## 5. 미래 개선 방향
+
+
+
+
+## 5. 시연 이미지
+
+
+|                                                                  홈                                                                  |                                                                 MBTI 테스트                                                                  |                                                                       MBTI 검색                                                                       |
+| :-----------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------: |
+ | <img src="./public/assets/readmeImg/홈.png" width=220 height=462> | <img src="./public/assets/readmeImg/테스트화면.png" width=220 height=462> | <img src="./public/assets/readmeImg/선택화면.png" width=220 height=462>
+
+
+|                                                                    결과 화면                                                                    |                                                                   짝궁 리스트                                                                    |                                                                 짝궁 상세                                                                  |
+| :-----------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------: |
+| <img src="./public/assets/readmeImg/결과화면.png" width=220 height=462> | <img src="./public/assets/readmeImg/짝궁리스트.png" width=220 height=462> | <img src="./public/assets/readmeImg/상세페이지.png" width=220 height=462> |
+
+
+
+<br>
+<br>
+
+## 6. 폴더 구조
+
+```
+📦public
+ ┣ 📂assets
+ ┃ ┣ 📂img
+ ┃ ┗ 📂readmeImg
+ 📦src
+ ┣ 📂api
+ ┣ 📂components
+ ┃ ┣ 📜Button.jsx
+ ┃ ┣ 📜Common.jsx
+ ┃ ┣ 📜Header.jsx
+ ┃ ┗ 📜KakakoMap.jsx
+ ┣ 📂data
+ ┃ ┗ 📜Data.jsx
+ ┣ 📂pages
+ ┃ ┣ 📂FindMyPet
+ ┃ ┃ ┣ 📂Detail
+ ┃ ┃ ┃ ┗ 📜FindMyPetDetail.jsx
+ ┃ ┃ ┗ 📜FindMyPet.jsx
+ ┃ ┣ 📂Home
+ ┃ ┃ ┗ 📜Home.jsx
+ ┃ ┣ 📂Result
+ ┃ ┃ ┗ 📜Result.jsx
+ ┃ ┣ 📂Search
+ ┃ ┃ ┗ 📜Search.jsx
+ ┃ ┗ 📂Test
+ ┃ ┃ ┗ 📜Test.jsx
+ ┣ 📂store
+ ┃ ┗ 📜UsePetListStore.jsx
+ ┣ 📂style
+ ┃ ┣ 📜fonts.css
+ ┃ ┗ 📜GlobalStyle.jsx
+ ┣ 📜App.js
+ ┗ 📜index.js
+
+```
+
+
+<br>
+<br>
+
+
+## 7. 미래 개선 방향
 
 ### 1. 회원가입 및 로그인을 통한 유저 관리
 회원가입 및 로그인 기능 구현을 통해 유저를 받아 유기동물 찜목록 또는 입양 신청을 통해 보호소가 받을 수 있도록 기능을 확장할 계획을 가지고 있습니다. 개인적으로 백엔드 학습 이후 기능을 확장할 계획을 가지고 있습니다.
@@ -241,6 +314,6 @@ export const usePetListStore = create((set) => ({
 <br>
 <br>
 
-## 6. 성과 및 느낀 점
+## 8. 성과 및 느낀 점
 
 이번 프로젝트를 통해 Axois와 zustand를 사용하였습니다. 확실히 공공데이터 API를 통해 Axios및 async await를 익숙해지는 계기가 되었습니다. 이러한 기회를 통해 백엔드에 관심이 생겼고 node.js 학습을 통한 백엔드를 만들어 하나의 풀스택 프로젝트를 경험할 수 있는 기회를 가지고 싶습니다.
