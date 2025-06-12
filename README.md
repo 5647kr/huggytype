@@ -266,7 +266,6 @@ export const usePetListStore = create((set) => ({
  ┃ ┣ 📂img
  ┃ ┗ 📂readmeImg
  📦src
- ┣ 📂api
  ┣ 📂components
  ┃ ┣ 📜Button.jsx
  ┃ ┣ 📜Common.jsx
@@ -309,6 +308,9 @@ export const usePetListStore = create((set) => ({
 
 ### 2. TypeScript로의 리펙토링 & 이미지 레이지로딩
 최근 유행하는 TypeScript를 적용해 안정성과 코드 벨류를 향상시킬 계획을 가지고 있으며, 기회가 된다면 이미지 레이지로딩 또한 적용하여 부드러운 사용자 경험을 향상시키고 싶습니다.
+
+### 3. 예외처리
+테스트 또는 선택 없이 URL로 바로 접속하려는 경우 홈페이지로 되돌아가는 예외처리를 진행할 계획을 가지고 있습니다.
 
 
 <br>
