@@ -123,10 +123,12 @@ const Screen = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
   h2 {
     text-align: center;
-    font-size: 3rem;
+    font-size: 2.6rem;
     color: var(--main-color);
+    word-break: keep-all;
   }
 `;
 
@@ -139,5 +141,6 @@ const ButtonWrap = styled.div`
     width: 100%;
     font-size: 2rem;
     font-weight: bold;
+    word-break: keep-all;
   }
 `;
