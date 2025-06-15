@@ -10,10 +10,10 @@ import FindMyPetDetail from "./pages/FindMyPet/Detail/FindMyPetDetail";
 
 function App() {
   return (
-    <Wrap>
-      <GlobalStyle />
+    <HashRouter>
+      <Wrap>
+        <GlobalStyle />
 
-      <HashRouter basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/test" element={<Test />} />
@@ -24,8 +24,8 @@ function App() {
             <Route path=":id" element={<FindMyPetDetail />} />
           </Route>
         </Routes>
-      </HashRouter>
-    </Wrap>
+      </Wrap>
+    </HashRouter>
   );
 }
 export default App;
