@@ -48,7 +48,7 @@ const ContentWrap = styled.div`
   background-color: var(--sub-color);
   border-radius: 20px;
   padding: 20px;
-  margin-bottom: 40px;
+  margin-top: 40px;
   position: relative;
   img:first-child {
     transform: scaleX(-1);
@@ -87,7 +87,6 @@ const ContentWrap = styled.div`
 `
 
 const IntroWrap = styled(ContentWrap)`
-  background: url(${() => `${process.env.PUBLIC_URL}/assets/img/home_bg.webp`}) no-repeat 50% 0 / 80%;
   padding: 0;
   margin: 0;
   height: 200px;
@@ -95,13 +94,28 @@ const IntroWrap = styled(ContentWrap)`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  background-color: transparent;
+  z-index: 1;
+  &::after {
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.2;
+    background: url(${() => `${process.env.PUBLIC_URL}/assets/img/home_bg.webp`}) no-repeat 50% 0 / 80%;
+  }
   h2 {
     text-align: center;
   }
   p {
     text-align: center;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 10px;
+    word-break: keep-all;
   }
 `
