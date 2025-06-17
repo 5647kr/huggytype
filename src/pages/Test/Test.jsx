@@ -116,7 +116,7 @@ const Bar = styled.div`
 
 const Screen = styled.div`
   width: 100%;
-  height: 320px;
+  height: 260px;
   margin-top: 40px;
   background-color: var(--sub-color);
   border-radius: 20px;
