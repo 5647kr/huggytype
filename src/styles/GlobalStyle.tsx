@@ -1,10 +1,17 @@
 import { createGlobalStyle } from "styled-components";
+import "./fonts.css"
 
 const GlobalStyle = createGlobalStyle`
+  html {
+    font-size: 10px;
+    font-family: "Noto Sans KR";
+  }
+
   :root {
     --black-color: #000;
     --white-color: #fff;
-    font-size: 10px;
+    --font-rw: 400;
+    --font-bw: 700;
   }
 
   ul, li {
@@ -27,6 +34,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-weight: var(--font-rw);
   }
 
   @media screen and (max-width: 480px) {
