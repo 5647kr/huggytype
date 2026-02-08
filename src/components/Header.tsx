@@ -26,18 +26,6 @@ export default function Header() {
                 : "text-[#aaa] font-normal"
             }`
           }
-          to="/region"
-        >
-          지역
-        </NavLink>
-        <NavLink
-          className={({ isActive }) =>
-            `text-sm ${
-              isActive
-                ? "text-[#CC8E6B] font-semibold"
-                : "text-[#aaa] font-normal"
-            }`
-          }
           to="/adopt"
         >
           입양
