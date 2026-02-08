@@ -1,4 +1,5 @@
 interface CardDatas {
+  IMAGE_COURS: string;
   PBLANC_IDNTFY_NO: string;
   AGE_INFO: string;
   BDWGH_INFO: string;
