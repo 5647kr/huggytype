@@ -9,7 +9,7 @@ export default async function fetchDatas() {
   }
 
   const fetchData = await response.json()
-  const datas = fetchData.AbdmAnimalProtect[1].row
+  const datas = fetchData?.AbdmAnimalProtect[1]?.row
 
   return datas;
 }

@@ -5,13 +5,13 @@ export default function Home() {
   // 데이터 통신 예제코드
   const { data, isLoading, error } = useQuery({
     queryKey: ["datas"],
-    queryFn: () => fetchDatas(),
+    queryFn: fetchDatas,
     select: (data) =>
-      data.map((item: Datas) => ({
+      data.map((item: CardDatas) => ({
+        PBLANC_IDNTFY_NO: item.PBLANC_IDNTFY_NO,
         AGE_INFO: item.AGE_INFO,
         BDWGH_INFO: item.BDWGH_INFO,
         SEX_NM: item.SEX_NM,
-        PBLANC_IDNTFY_NO: item.PBLANC_IDNTFY_NO,
       })),
   });
 
