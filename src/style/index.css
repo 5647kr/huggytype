@@ -1,1 +1,6 @@
 @import "./tailwind.css";
+@import "./font.css";
+
+html {
+  font-family: "Noto Sans KR";
+}
