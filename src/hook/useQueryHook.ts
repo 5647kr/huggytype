@@ -1,15 +1,27 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
-import fetchDatas from "../api/fetchDatas";
+import {
+  useInfiniteQuery,
+  useQuery,
+  type QueryKey,
+} from "@tanstack/react-query";
+import { fetchDatas, filterDatas } from "../api/fetchDatas";
+import { useFilterStore } from "../store/filterStore";
 
-function useInfiniteQueryHook({ key }: { key: string[] }) {
+function useInfiniteQueryHook() {
+  const filterState = useFilterStore((state) => state.filterState);
+
+  console.log(filterState);
   return useInfiniteQuery({
-    queryKey: key,
-    queryFn: ({ pageParam }) => fetchDatas({ page: pageParam }),
+    queryKey: ["contentData"],
+    queryFn: ({ pageParam }) =>
+      fetchDatas({
+        page: pageParam,
+        path: "abandonmentPublic_v2",
+      }),
     initialPageParam: 1,
 
     getNextPageParam: (lastPage) => {
       const totalCount = lastPage.totalCount;
-      console.log(lastPage);
+
       return totalCount >= lastPage.numOfRows * lastPage.pageNo
         ? lastPage.pageNo + 1
         : undefined;
@@ -17,7 +29,25 @@ function useInfiniteQueryHook({ key }: { key: string[] }) {
   });
 }
 
+function useQueryHook<T extends QueryKey>({
+  key,
+  path,
+  sido,
+  enabled,
+}: {
+  key: T;
+  path: string;
+  sido?: string;
+  enabled?: boolean;
+}) {
+  return useQuery({
+    queryKey: key,
+    queryFn: () => filterDatas({ path: path, sido: sido }),
+    enabled: enabled,
+  });
+}
+
 // 구조동물 조회
 // abandonmentPublic_v2
 
-export { useInfiniteQueryHook };
+export { useInfiniteQueryHook, useQueryHook };
