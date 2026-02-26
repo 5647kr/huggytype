@@ -3,12 +3,12 @@ import ContentItem from "../../components/ContentItem";
 import { useInfiniteQueryHook } from "../../hook/useQueryHook";
 import Loading from "../../components/Loading";
 import { useEffect } from "react";
+import FilterForm from "../../components/FilterForm";
+import { useFilterStore } from "../../store/filterStore";
 
 export default function Home() {
   const { data, hasNextPage, isFetchingNextPage, fetchNextPage, isLoading } =
-    useInfiniteQueryHook({
-      key: ["contentData"],
-    });
+    useInfiniteQueryHook();
 
   const content = data?.pages.flatMap((page) => page.items.item) || [];
 
@@ -31,6 +31,8 @@ export default function Home() {
 
   return (
     <>
+      <FilterForm />
+
       <ul className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-5">
         {content &&
           content.length > 0 &&
