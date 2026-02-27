@@ -2,15 +2,25 @@ import { useInView } from "react-intersection-observer";
 import ContentItem from "../../components/ContentItem";
 import { useInfiniteQueryHook } from "../../hook/useQueryHook";
 import Loading from "../../components/Loading";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import FilterForm from "../../components/FilterForm";
+import { Link } from "react-router";
 import { useFilterStore } from "../../store/filterStore";
 
 export default function Home() {
-  const { data, hasNextPage, isFetchingNextPage, fetchNextPage, isLoading } =
-    useInfiniteQueryHook();
+  const filterState = useFilterStore((state) => state.filterState);
+  const [applyFilter, setApplyFilter] = useState(filterState);
 
-  const content = data?.pages.flatMap((page) => page.items.item) || [];
+  const handleApplyFilter = () => {
+    setApplyFilter(filterState);
+  };
+
+  const { data, hasNextPage, isFetchingNextPage, fetchNextPage, isLoading } =
+    useInfiniteQueryHook({ applyFilter });
+
+  const content = data?.pages.flatMap((page) => page.items?.item || []) || [];
+
+  console.log(content);
 
   const { ref, inView } = useInView();
 
@@ -31,21 +41,27 @@ export default function Home() {
 
   return (
     <>
-      <FilterForm />
+      <FilterForm handleApplyFilter={handleApplyFilter} />
 
-      <ul className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-5">
-        {content &&
-          content.length > 0 &&
-          content.map((item) => (
-            <li key={item.noticeNo}>
-              <ContentItem {...item} />
+      {content && content.length > 0 ? (
+        <ul className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-5">
+          {content.map((item) => (
+            <li key={item.desertionNo}>
+              <Link to={`detail/${item.desertionNo}`}>
+                <ContentItem {...item} />
+              </Link>
             </li>
           ))}
-      </ul>
+        </ul>
+      ) : (
+        <div>검색 결과가 없습니다.</div>
+      )}
 
-      <div ref={ref} className="flex justify-center py-5">
-        <Loading />
-      </div>
+      {hasNextPage && (
+        <div ref={ref} className="flex justify-center py-5">
+          <Loading />
+        </div>
+      )}
     </>
   );
 }

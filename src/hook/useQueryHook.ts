@@ -3,19 +3,17 @@ import {
   useQuery,
   type QueryKey,
 } from "@tanstack/react-query";
-import { fetchDatas, filterDatas } from "../api/fetchDatas";
-import { useFilterStore } from "../store/filterStore";
+import fetchDatas from "../api/fetchDatas";
 
-function useInfiniteQueryHook() {
-  const filterState = useFilterStore((state) => state.filterState);
-
-  console.log(filterState);
+function useInfiniteQueryHook({ applyFilter }: { applyFilter: FilterState }) {
   return useInfiniteQuery({
-    queryKey: ["contentData"],
+    queryKey: ["contentData", applyFilter],
     queryFn: ({ pageParam }) =>
       fetchDatas({
         page: pageParam,
         path: "abandonmentPublic_v2",
+        pageNum: 20,
+        applyFilter: applyFilter,
       }),
     initialPageParam: 1,
 
@@ -32,22 +30,32 @@ function useInfiniteQueryHook() {
 function useQueryHook<T extends QueryKey>({
   key,
   path,
+  page,
+  pageNum,
   sido,
+  id,
   enabled,
 }: {
   key: T;
   path: string;
+  page: number;
+  pageNum: number;
   sido?: string;
+  id?: string;
   enabled?: boolean;
 }) {
   return useQuery({
     queryKey: key,
-    queryFn: () => filterDatas({ path: path, sido: sido }),
+    queryFn: () =>
+      fetchDatas({
+        path: path,
+        page: page,
+        pageNum: pageNum,
+        sido: sido,
+        id: id,
+      }),
     enabled: enabled,
   });
 }
-
-// 구조동물 조회
-// abandonmentPublic_v2
 
 export { useInfiniteQueryHook, useQueryHook };

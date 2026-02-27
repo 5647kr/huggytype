@@ -1,20 +1,31 @@
-// import { useState } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import { useQueryHook } from "../hook/useQueryHook";
 import { useFilterStore } from "../store/filterStore";
 
-export default function FilterForm() {
+export default function FilterForm({
+  handleApplyFilter,
+}: {
+  handleApplyFilter: () => void;
+}) {
   const filterState = useFilterStore((state) => state.filterState);
   const setFilterState = useFilterStore((state) => state.setFilterState);
+  const resetFilterState = useFilterStore((state) => state.resetFilter);
+
+  console.log(filterState);
 
   const { data: sido } = useQueryHook({
     key: ["sido"],
     path: "sido_v2",
+    page: 1,
+    pageNum: 100,
   });
 
   const { data: sigungu } = useQueryHook({
     key: ["sigungu", filterState.sido],
     path: "sigungu_v2",
+    page: 1,
+    pageNum: 1000,
     sido: filterState.sido,
     enabled: filterState.sido !== "none",
   });
@@ -31,22 +42,13 @@ export default function FilterForm() {
     { id: "all", name: "전체" },
     { id: "417000", name: "강아지" },
     { id: "422400", name: "고양이" },
+    { id: "429900", name: "기타" },
   ];
   const sexData = [
     { id: "all", name: "전체" },
     { id: "M", name: "수컷" },
     { id: "F", name: "암컷" },
   ];
-
-  useEffect(() => {
-    if (sigunguContent && sigunguContent.length > 0) {
-      const firstItem = sigunguContent[0].orgCd;
-
-      if (filterState.sigungu !== firstItem) {
-        setFilterState("sigungu", firstItem);
-      }
-    }
-  }, [sigunguContent, filterState.sigungu, setFilterState]);
 
   return (
     <>
@@ -181,6 +183,11 @@ export default function FilterForm() {
           ))}
         </ul>
       </div>
+
+      <button onClick={handleApplyFilter} className="cursor-pointer">
+        찾기
+      </button>
+      <button onClick={resetFilterState}>설정 초기화</button>
     </>
   );
 }
