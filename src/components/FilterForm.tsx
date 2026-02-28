@@ -12,8 +12,6 @@ export default function FilterForm({
   const setFilterState = useFilterStore((state) => state.setFilterState);
   const resetFilterState = useFilterStore((state) => state.resetFilter);
 
-  console.log(filterState);
-
   const { data: sido } = useQueryHook({
     key: ["sido"],
     path: "sido_v2",

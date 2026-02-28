@@ -28,7 +28,19 @@ export default function Header() {
           }
           to="/recommend"
         >
-          추천받기
+          추천
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            `text-sm ${
+              isActive
+                ? "text-[#CC8E6B] font-semibold"
+                : "text-[#aaa] font-normal"
+            }`
+          }
+          to="/wishList"
+        >
+          찜목록
         </NavLink>
       </div>
     </header>

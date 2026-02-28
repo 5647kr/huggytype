@@ -47,8 +47,8 @@ export const useFilterStore = create<FilterStore>()(
         }),
     }),
     {
-      name: "filter-storage", // sessionStorage에 저장될 키 이름
-      storage: createJSONStorage(() => sessionStorage), // 기본값인 localStorage 대신 sessionStorage 설정
+      name: "filter-storage",
+      storage: createJSONStorage(() => sessionStorage),
     }
   )
 );
