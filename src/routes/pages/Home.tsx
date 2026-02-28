@@ -20,8 +20,6 @@ export default function Home() {
 
   const content = data?.pages.flatMap((page) => page.items?.item || []) || [];
 
-  console.log(content);
-
   const { ref, inView } = useInView();
 
   useEffect(() => {
@@ -33,7 +31,7 @@ export default function Home() {
   // 초기 진입 로딩 화면
   if (isLoading) {
     return (
-      <div className="min-h-[calc(100vh-91px)] flex justify-center items-center">
+      <div className="min-h-[calc(100vh-91px)] col-span-full sm:col-[2/8] lg:col-[3/11] flex justify-center items-center">
         <strong>데이터 불러오는 중...</strong>
       </div>
     );
@@ -41,24 +39,28 @@ export default function Home() {
 
   return (
     <>
-      <FilterForm handleApplyFilter={handleApplyFilter} />
+      <section className="col-span-full sm:col-[2/8] lg:col-[3/11]">
+        <FilterForm handleApplyFilter={handleApplyFilter} />
+      </section>
 
-      {content && content.length > 0 ? (
-        <ul className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-5">
-          {content.map((item) => (
-            <li key={item.desertionNo}>
-              <Link to={`detail/${item.desertionNo}`}>
-                <ContentItem {...item} />
-              </Link>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <div>검색 결과가 없습니다.</div>
-      )}
+      <section className="col-span-full sm:col-[2/8] lg:col-[3/11]">
+        {content && content.length > 0 ? (
+          <ul className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-5">
+            {content.map((item) => (
+              <li key={item.desertionNo}>
+                <Link to={`detail/${item.desertionNo}`}>
+                  <ContentItem {...item} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div>검색 결과가 없습니다.</div>
+        )}
+      </section>
 
       {hasNextPage && (
-        <div ref={ref} className="flex justify-center py-5">
+        <div ref={ref} className="col-span-full flex justify-center py-5">
           <Loading />
         </div>
       )}
