@@ -16,6 +16,7 @@ function useInfiniteQueryHook({ applyFilter }: { applyFilter: FilterState }) {
         applyFilter: applyFilter,
       }),
     initialPageParam: 1,
+    staleTime: 1000 * 60 * 30,
 
     getNextPageParam: (lastPage) => {
       const totalCount = lastPage.totalCount;
@@ -55,6 +56,7 @@ function useQueryHook<T extends QueryKey>({
         id: id,
       }),
     enabled: enabled,
+    staleTime: 1000 * 60 * 30,
   });
 }
 
