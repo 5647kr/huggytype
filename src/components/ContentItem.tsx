@@ -1,7 +1,10 @@
-import { Cake, Heart, VenusAndMars, WeightTilde } from "lucide-react";
+import { Cake, Heart, Image, VenusAndMars, WeightTilde } from "lucide-react";
 import { useWishListStore } from "../store/wishListStore";
+import { useState } from "react";
 
 export default function ContentItem(props: ContentData) {
+  const [imgLoad, setImgLoad] = useState(false);
+
   const wishState = useWishListStore((state) => state.wishState);
 
   const setWishState = useWishListStore((state) => state.setWishState);
@@ -28,11 +31,22 @@ export default function ContentItem(props: ContentData) {
           stroke={`${isWished ? "none" : "#CC8E6B"}`}
         />
       </button>
+
+      {!imgLoad && (
+        <div className="w-full aspect-[1/0.8] flex justify-center items-center bg-[#eee]">
+          <Image className="text-[#CC8E6B]" size={20} />
+        </div>
+      )}
+
       <img
         src={props.popfile1}
         alt={props.kindNm}
-        className="w-full aspect-[1/0.8] vertical-top object-cover"
+        onLoad={() => setImgLoad(true)}
+        className={`w-full aspect-[1/0.8] vertical-top object-cover ${
+          imgLoad ? "block" : "hidden"
+        }`}
       />
+
       <div className="p-5">
         <h2 className="text-lg text-[#CC8E6B]">{props.noticeNo}</h2>
 

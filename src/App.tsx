@@ -3,6 +3,7 @@ import Default from "./routes/layouts/Default";
 import Home from "./routes/pages/Home";
 import Detail from "./routes/pages/Detail";
 import Recommend from "./routes/pages/Recommend";
+import WishList from "./routes/pages/WishList";
 
 const router = createBrowserRouter([
   {
@@ -11,6 +12,7 @@ const router = createBrowserRouter([
       { path: "", Component: Home },
       { path: "/detail/:id", Component: Detail },
       { path: "/recommend", Component: Recommend },
+      { path: "/wishList", Component: WishList },
     ],
   },
 ]);
