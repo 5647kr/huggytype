@@ -37,3 +37,12 @@ interface FilterState {
   state: string;
   type: string;
 }
+
+interface PublicApiResponse {
+  items: {
+    item: AbandonedAnimal[];
+  };
+  numOfRows: number;
+  pageNo: number;
+  totalCount: number;
+}

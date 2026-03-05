@@ -8,6 +8,7 @@ export default async function fetchDatas({
   sido,
   id,
   applyFilter,
+  breedIds,
 }: {
   page: number;
   path: string;
@@ -15,6 +16,7 @@ export default async function fetchDatas({
   sido?: string;
   id?: string;
   applyFilter?: FilterState;
+  breedIds?: string;
 }) {
   const BASE_URL = `${API_URL}${path}?serviceKey=${API_KEY}&_type=json&numOfRows=${pageNum}&pageNo=${page}`;
   const url = new URL(BASE_URL);
@@ -36,6 +38,10 @@ export default async function fetchDatas({
       url.searchParams.append("upkind", applyFilter.type);
     if (applyFilter.state !== "all")
       url.searchParams.append("state", applyFilter.state);
+  }
+
+  if (breedIds) {
+    url.searchParams.append("kind", breedIds);
   }
 
   const response = await fetch(url.toString());
