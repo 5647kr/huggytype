@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import FilterForm from "../../components/FilterForm";
 import { Link } from "react-router";
 import { useFilterStore } from "../../store/filterStore";
+import { Funnel } from "lucide-react";
 
 export default function Home() {
   const filterState = useFilterStore((state) => state.filterState);
@@ -40,10 +41,13 @@ export default function Home() {
   return (
     <>
       <section className="col-span-full sm:col-[2/8] lg:col-[3/11]">
+        <button>
+          <Funnel />
+        </button>
         <FilterForm handleApplyFilter={handleApplyFilter} />
       </section>
 
-      <section className="col-span-full sm:col-[2/8] lg:col-[3/11]">
+      <section className="col-span-full sm:col-[2/8] lg:col-[3/11] mt-10">
         {content && content.length > 0 ? (
           <ul className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-5">
             {content.map((item) => (
