@@ -34,6 +34,7 @@ function useQueryHook<T extends QueryKey>({
   page,
   pageNum,
   sido,
+  type,
   id,
   enabled,
 }: {
@@ -42,6 +43,7 @@ function useQueryHook<T extends QueryKey>({
   page: number;
   pageNum: number;
   sido?: string;
+  type?: string;
   id?: string;
   enabled?: boolean;
 }) {
@@ -53,6 +55,7 @@ function useQueryHook<T extends QueryKey>({
         page: page,
         pageNum: pageNum,
         sido: sido,
+        type: type,
         id: id,
       }),
     enabled: enabled,

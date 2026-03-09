@@ -1,12 +1,13 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { X } from "lucide-react";
 import { useQueryHook } from "../hook/useQueryHook";
 import { useFilterStore } from "../store/filterStore";
 
 export default function FilterForm({
   handleApplyFilter,
+  handleActiveFilter,
 }: {
   handleApplyFilter: () => void;
+  handleActiveFilter: () => void;
 }) {
   const filterState = useFilterStore((state) => state.filterState);
   const setFilterState = useFilterStore((state) => state.setFilterState);
@@ -28,9 +29,22 @@ export default function FilterForm({
     enabled: filterState.sido !== "none",
   });
 
+  const { data: petType } = useQueryHook({
+    key: ["petType", filterState.type],
+    path: "kind_v2",
+    page: 1,
+    pageNum: 1000,
+    type: filterState.type,
+    enabled:
+      filterState.type === "417000" ||
+      filterState.type === "422400" ||
+      filterState.type === "429900",
+  });
+
   // 데이터
   const sidoContent = sido?.items.item;
   const sigunguContent = sigungu?.items.item;
+  const petTypeContent = petType?.items.item;
   const stateData = [
     { id: "all", name: "전체" },
     { id: "protect", name: "보호중" },
@@ -49,15 +63,15 @@ export default function FilterForm({
   ];
 
   return (
-    <>
-      <div className="flex gap-5">
-        <h2>시도</h2>
+    <section className="bg-white shadow-[0_2px_4px_rgba(96,96,96,0.5)] p-5 text-[#CC8E6B] flex flex-col gap-5 rounded-[10px] mt-2.5 relative">
+      <div className="flex gap-5 items-center">
+        <h2 className="text-lg font-semibold">시도</h2>
         <select
           name="sido"
           id="sido"
           value={filterState.sido}
           onChange={(e) => setFilterState("sido", e.target.value)}
-          className="focus:outline-0"
+          className="focus:outline-0 text-base"
         >
           <option value="none">전체</option>
           {sidoContent?.map((item: { orgCd: string; orgdownNm: string }) => (
@@ -70,13 +84,13 @@ export default function FilterForm({
 
       {filterState.sido !== "none" && (
         <div className="flex gap-5">
-          <h2>시군구</h2>
+          <h2 className="text-lg font-semibold">시군구</h2>
           <select
             name="sigungu"
             id="sigungu"
             value={filterState.sigungu}
             onChange={(e) => setFilterState("sigungu", e.target.value)}
-            className="focus:outline-0"
+            className="focus:outline-0 text-base"
           >
             {sigunguContent?.map(
               (item: { orgCd: string; orgdownNm: string }) => (
@@ -89,9 +103,9 @@ export default function FilterForm({
         </div>
       )}
 
-      <div className="flex gap-5">
-        <h2>상태</h2>
-        <ul className="flex p-1 w-full rounded-[10px] items-center bg-[#eee]">
+      <div className="flex gap-5 items-center">
+        <h2 className="text-lg font-semibold">상태</h2>
+        <ul className="flex p-1 flex-1 rounded-[10px] text-base items-center bg-[#eee]">
           {stateData.map((item) => (
             <li
               key={item.id}
@@ -100,7 +114,7 @@ export default function FilterForm({
               }`}
             >
               <label
-                className={`w-full h-full flex justify-center items-center cursor-pointer ${
+                className={`w-full h-full flex justify-center items-center cursor-pointer py-2.5 ${
                   filterState.state === item.id
                     ? "text-[#CC8E6B]"
                     : "text-[#a0a0a0]"
@@ -120,9 +134,9 @@ export default function FilterForm({
         </ul>
       </div>
 
-      <div className="flex gap-5">
-        <h2>축종</h2>
-        <ul className="flex p-1 w-full rounded-[10px] items-center bg-[#eee]">
+      <div className="flex gap-5 items-center">
+        <h2 className="text-lg font-semibold">축종</h2>
+        <ul className="flex p-1 flex-1 rounded-[10px] items-center bg-[#eee]">
           {typeData.map((item) => (
             <li
               key={item.id}
@@ -131,7 +145,7 @@ export default function FilterForm({
               }`}
             >
               <label
-                className={`w-full h-full flex justify-center items-center cursor-pointer ${
+                className={`w-full h-full flex justify-center items-center cursor-pointer py-2.5 ${
                   filterState.type === item.id
                     ? "text-[#CC8E6B]"
                     : "text-[#a0a0a0]"
@@ -151,9 +165,28 @@ export default function FilterForm({
         </ul>
       </div>
 
-      <div className="flex gap-5">
-        <h2>성별</h2>
-        <ul className="flex p-1 w-full rounded-[10px] items-center bg-[#eee]">
+      {filterState.type !== "all" && (
+        <div className="flex gap-5">
+          <h2 className="text-lg font-semibold">품종</h2>
+          <select
+            name="petCode"
+            id="petCode"
+            value={filterState.petCode}
+            onChange={(e) => setFilterState("petCode", e.target.value)}
+            className="focus:outline-0 text-base"
+          >
+            {petTypeContent?.map((item: { kindCd: string; kindNm: string }) => (
+              <option key={item.kindCd} value={item.kindCd}>
+                {item.kindNm}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+
+      <div className="flex gap-5 items-center">
+        <h2 className="text-lg font-semibold">성별</h2>
+        <ul className="flex p-1 flex-1 rounded-[10px] items-center bg-[#eee]">
           {sexData.map((item) => (
             <li
               key={item.id}
@@ -162,7 +195,7 @@ export default function FilterForm({
               }`}
             >
               <label
-                className={`w-full h-full flex justify-center items-center cursor-pointer ${
+                className={`w-full h-full flex justify-center items-center cursor-pointer py-2.5 ${
                   filterState.sex === item.id
                     ? "text-[#CC8E6B]"
                     : "text-[#a0a0a0]"
@@ -182,10 +215,27 @@ export default function FilterForm({
         </ul>
       </div>
 
-      <button onClick={handleApplyFilter} className="cursor-pointer">
-        찾기
+      <div className="flex gap-5 flex-row-reverse mt-5">
+        <button
+          onClick={handleApplyFilter}
+          className="cursor-pointer w-full py-2.5 rounded-[10px] border border-[#E3C9A6] text-base"
+        >
+          찾기
+        </button>
+        <button
+          onClick={resetFilterState}
+          className="cursor-pointer w-full py-2.5 rounded-[10px] border border-[#E3C9A6] text-base"
+        >
+          설정 초기화
+        </button>
+      </div>
+
+      <button
+        className="absolute top-5 right-5 cursor-pointer"
+        onClick={handleActiveFilter}
+      >
+        <X />
       </button>
-      <button onClick={resetFilterState}>설정 초기화</button>
-    </>
+    </section>
   );
 }

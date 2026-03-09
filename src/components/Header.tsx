@@ -3,7 +3,11 @@ import { NavLink } from "react-router";
 export default function Header() {
   return (
     <header className="py-5 px-4 md:px-8 border-b border-b-[#E3C9A6] flex justify-between items-center">
-      <img src="https://picsum.photos/50" alt="로고 이미지" />
+      <img
+        src="/favicon.webp"
+        alt="로고 이미지"
+        className="w-10 vertical-top"
+      />
 
       <div className="flex gap-x-5">
         <NavLink

@@ -6,23 +6,36 @@ export default async function fetchDatas({
   path,
   pageNum,
   sido,
+  type,
   id,
   applyFilter,
   breedIds,
+  selectedSido,
+  selectedSigungu,
 }: {
   page: number;
   path: string;
   pageNum?: number;
   sido?: string;
+  type?: string;
   id?: string;
   applyFilter?: FilterState;
   breedIds?: string;
+  selectedSido?: string | undefined;
+  selectedSigungu?: string | undefined;
 }) {
   const BASE_URL = `${API_URL}${path}?serviceKey=${API_KEY}&_type=json&numOfRows=${pageNum}&pageNo=${page}`;
   const url = new URL(BASE_URL);
 
+  console.log(selectedSido);
+  console.log(selectedSigungu);
+
   if (sido) {
     url.searchParams.append("upr_cd", sido);
+  }
+
+  if (type) {
+    url.searchParams.append("up_kind_cd", type);
   }
 
   if (id) {
@@ -42,7 +55,20 @@ export default async function fetchDatas({
 
   if (breedIds) {
     url.searchParams.append("kind", breedIds);
+
+    if (selectedSido) {
+      if (selectedSido !== "none") {
+        url.searchParams.append("upr_cd", selectedSido);
+      }
+    }
+    if (selectedSigungu) {
+      if (selectedSigungu !== "none") {
+        url.searchParams.append("org_cd", selectedSigungu);
+      }
+    }
   }
+
+  console.log(url.toString());
 
   const response = await fetch(url.toString());
 

@@ -6,6 +6,7 @@ interface FilterState {
   sigungu: string;
   state: string;
   type: string;
+  petCode: string;
   sex: string;
 }
 
@@ -23,6 +24,7 @@ export const useFilterStore = create<FilterStore>()(
         sigungu: "",
         state: "all",
         type: "all",
+        petCode: "",
         sex: "all",
       },
 
@@ -32,6 +34,7 @@ export const useFilterStore = create<FilterStore>()(
             ...state.filterState,
             [key]: value,
             ...(key === "sido" ? { sigungu: "" } : {}),
+            ...(key === "type" ? { petCode: "" } : {}),
           },
         })),
 
@@ -42,6 +45,7 @@ export const useFilterStore = create<FilterStore>()(
             sigungu: "",
             state: "all",
             type: "all",
+            petCode: "",
             sex: "all",
           },
         }),
