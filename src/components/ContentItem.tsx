@@ -5,7 +5,6 @@ import {
   Image,
   Mars,
   Venus,
-  VenusAndMars,
   WeightTilde,
 } from "lucide-react";
 import { useWishListStore } from "../store/wishListStore";
@@ -76,7 +75,13 @@ export default function ContentItem(props: ContentData) {
             ) : (
               <CircleQuestionMark className="w-3.5 h-3.5 aspect-square" />
             )}
-            <p>{props.sexCd === "M" ? "수컷" : props.sexCd === "F" ? "암컷" : "알 수 없음"}</p>
+            <p>
+              {props.sexCd === "M"
+                ? "수컷"
+                : props.sexCd === "F"
+                ? "암컷"
+                : "알 수 없음"}
+            </p>
           </li>
         </ul>
       </div>
