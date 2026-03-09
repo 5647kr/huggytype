@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router";
 import { useQueries } from "@tanstack/react-query";
 import fetchDatas from "../../api/fetchDatas";
 import ContentItem from "../../components/ContentItem";
-import { useInView } from "react-intersection-observer";
+import Loading from "../../components/Loading";
+import { useQueryHook } from "../../hook/useQueryHook";
 
 const QUESTIONLIST = [
   {
@@ -47,6 +48,11 @@ const QUESTIONLIST = [
       { id: "short", name: "털 빠짐이 적은 친구가 좋아요" },
       { id: "long", name: "털이 빠져도 괜찮아요 (부지런히 청소할게요!)" },
     ],
+  },
+  {
+    id: "Q6",
+    title: "살고 있는 지역을 선택해주세요",
+    answer: [],
   },
 ];
 
@@ -192,6 +198,8 @@ export default function Recommend() {
   const [questionNum, setQuestionNum] = useState(0);
   const [isTimeOut, setIsTimeOut] = useState(false);
   const [resultPage, setResultPage] = useState(false);
+  const [selectedSido, setSelectedSido] = useState("none");
+  const [selectedSigungu, setSelectedSigungu] = useState("none");
 
   const [petRecommand, setPetRecommand] = useState<petRecommandType>({
     type: "",
@@ -201,6 +209,25 @@ export default function Recommend() {
     breedIds: string[];
     selected: string[];
   } | null>(null);
+
+  const { data: sido } = useQueryHook({
+    key: ["sido"],
+    path: "sido_v2",
+    page: 1,
+    pageNum: 100,
+  });
+
+  const { data: sigungu } = useQueryHook({
+    key: ["sigungu", selectedSido],
+    path: "sigungu_v2",
+    page: 1,
+    pageNum: 1000,
+    sido: selectedSido,
+    enabled: selectedSido !== "none",
+  });
+
+  const sidoContent = sido?.items.item;
+  const sigunguContent = sigungu?.items.item;
 
   useEffect(() => {
     if (questionNum === QUESTIONLIST.length) {
@@ -276,27 +303,24 @@ export default function Recommend() {
   // 추천 동물 api 통신
   const breedResults = useQueries({
     queries: (finalBreeds?.breedIds || []).map((id) => ({
-      queryKey: ["recommendAnimal", id],
+      queryKey: ["recommendAnimal", id, selectedSido, selectedSigungu],
       queryFn: () =>
         fetchDatas({
           path: "abandonmentPublic_v2",
           page: 1,
           pageNum: 20,
           breedIds: id,
+          selectedSido: selectedSido,
+          selectedSigungu: selectedSigungu,
         }),
       enabled: !!finalBreeds, // 결과 버튼을 눌렀을 때만 실행
       staleTime: 1000 * 60 * 30,
     })),
   });
 
-  const totalQueries = breedResults.length;
-  const completedQueries = breedResults.filter(
-    (result) => result.status !== "pending"
-  ).length;
-  const progressPercentage =
-    totalQueries > 0 ? Math.floor((completedQueries / totalQueries) * 100) : 0;
+  console.log(selectedSido);
 
-  // 2. 모든 쿼리 결과를 하나의 배열로 합치기
+  // 전체 로딩 완료
   const isAllLoading = breedResults.some((result) => result.isLoading);
 
   // 2. 모든 데이터가 준비되었을 때만 합치기
@@ -366,48 +390,104 @@ export default function Recommend() {
                   {QUESTIONLIST[questionNum]?.title}
                 </h2>
               </div>
-              <div className="flex flex-wrap justify-center gap-2.5">
-                {QUESTIONLIST[questionNum]?.answer.map((item) => (
+              {questionNum !== 5 ? (
+                <div className="flex flex-wrap justify-center gap-2.5">
+                  {QUESTIONLIST[questionNum]?.answer.map((item) => (
+                    <button
+                      key={item.id}
+                      className="bg-white w-80 rounded-[10px] border border-[#E3C9A6] p-2.5 text-[#CC8E6B] cursor-pointer hover:bg-[#CC8E6B] hover:text-white"
+                      onClick={() => handleSelectAnswer(item.id)}
+                    >
+                      {item.name}
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                <>
+                  <div className="flex gap-5 justify-center text-[#CC8E6B]">
+                    <div className="flex gap-5 items-center">
+                      <h2 className="text-lg font-semibold">시도</h2>
+                      <select
+                        name="sido"
+                        id="sido"
+                        value={selectedSido}
+                        onChange={(e) => setSelectedSido(e.target.value)}
+                        className="focus:outline-0 text-base"
+                      >
+                        <option value="none">전체</option>
+                        {sidoContent?.map(
+                          (item: { orgCd: string; orgdownNm: string }) => (
+                            <option key={item.orgCd} value={item.orgCd}>
+                              {item.orgdownNm}
+                            </option>
+                          )
+                        )}
+                      </select>
+                    </div>
+                    <div className="flex gap-5 items-center">
+                      <h2 className="text-lg font-semibold">시군구</h2>
+                      <select
+                        name="sigungu"
+                        id="sigungu"
+                        value={selectedSigungu}
+                        onChange={(e) => setSelectedSigungu(e.target.value)}
+                        className="focus:outline-0 text-base"
+                      >
+                        <option value="none">전체</option>
+                        {sigunguContent?.map(
+                          (item: { orgCd: string; orgdownNm: string }) => (
+                            <option key={item.orgCd} value={item.orgCd}>
+                              {item.orgdownNm}
+                            </option>
+                          )
+                        )}
+                      </select>
+                    </div>
+                  </div>
                   <button
-                    key={item.id}
-                    className="bg-white w-80 rounded-[10px] border border-[#E3C9A6] p-2.5 text-[#CC8E6B] cursor-pointer"
-                    onClick={() => handleSelectAnswer(item.id)}
+                    className="bg-white w-80 rounded-[10px] border border-[#E3C9A6] p-2.5 text-[#CC8E6B] cursor-pointer hover:bg-[#CC8E6B] hover:text-white mx-auto"
+                    onClick={() => setQuestionNum((prev) => prev + 1)}
                   >
-                    {item.name}
+                    테스트 완료
                   </button>
-                ))}
-              </div>
+                </>
+              )}
             </div>
           </div>
         )}
 
         {testDone && !isTimeOut && (
           <div className="h-full flex justify-center items-center">
-            <h2>결과 취합중...</h2>
+            <h2 className="text-[#CC8E6B] font-bold text-xl animate-bounce">
+              적합한 품종을 찾고 있어요..
+            </h2>
           </div>
         )}
 
         {testDone && isTimeOut && !resultPage && (
           <>
-            <div className="h-full flex flex-col justify-center">
+            <div className="h-full flex flex-col justify-center text-[#CC8E6B]">
               <h2 className="text-center text-xl font-bold mb-10">
-                인생의 반려동물로는...
+                추천 품종은...
               </h2>
               <ul className="flex gap-5 flex-wrap">
                 {finalBreedIds.map((item) => (
                   <li
                     key={item.id}
-                    className="flex justify-center items-center flex-col gap-2.5"
+                    className="flex justify-center items-center flex-col gap-2.5 rounded-[10px] border border-[#E3C9A6] p-2.5"
                   >
                     <img
                       src={`./img/${item.img}.webp`}
                       alt={item.title}
                       className="w-20"
                     />
-                    {item.title}
+                    <p>{item.title}</p>
                   </li>
                 ))}
               </ul>
+
+              {/* 추천 업데이트 */}
+              <div></div>
 
               <div className="flex mt-10 justify-center gap-5">
                 <button
@@ -415,14 +495,16 @@ export default function Recommend() {
                     setTestDone(false);
                     setTestStart(false);
                     setQuestionNum(0);
+                    setSelectedSido("none");
+                    setSelectedSigungu("none");
                   }}
-                  className="bg-white w-80 rounded-[10px] border border-[#E3C9A6] p-2.5 text-[#CC8E6B] cursor-pointer"
+                  className="bg-white w-80 rounded-[10px] border border-[#E3C9A6] p-2.5 text-[#CC8E6B] cursor-pointer hover:bg-[#CC8E6B] hover:text-white"
                 >
                   다시 테스트 하기
                 </button>
                 <button
                   onClick={handleGetFinalBreed}
-                  className="bg-white w-80 rounded-[10px] border border-[#E3C9A6] p-2.5 text-[#CC8E6B] cursor-pointer"
+                  className="bg-white w-80 rounded-[10px] border border-[#E3C9A6] p-2.5 text-[#CC8E6B] cursor-pointer hover:bg-[#CC8E6B] hover:text-white"
                 >
                   추천 품종으로 구조 동물 찾기
                 </button>
@@ -432,17 +514,14 @@ export default function Recommend() {
         )}
 
         {testDone && resultPage && (
-          <div className="py-10">
+          <div>
             {isAllLoading ? (
-              <div className="text-center py-20">
-                <p className="animate-bounce">
-                  🐾 맞춤형 친구들을 불러오는 중입니다...
-                  {progressPercentage}%
-                </p>
+              <div className="min-h-[calc(100vh-111px)] col-span-full flex justify-center items-center">
+                <Loading />
               </div>
             ) : (
               <>
-                <ul className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-5">
+                <ul className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-5 py-10">
                   {filteredAnimals.map((item) => (
                     <li key={item.desertionNo}>
                       <Link to={`/detail/${item.desertionNo}`}>
@@ -452,9 +531,22 @@ export default function Recommend() {
                   ))}
                 </ul>
                 {filteredAnimals.length === 0 && finalBreeds && (
-                  <p className="col-span-full text-center">
-                    현재 조건에 맞는 친구들이 보호소에 없네요. 😢
-                  </p>
+                  <>
+                    <p className="col-span-full text-center text-[#CC8E6B]">
+                      현재 조건에 맞는 친구들이 보호소에 없네요. 😢
+                    </p>
+                    <button
+                      onClick={() => {
+                        setTestDone(false);
+                        setTestStart(false);
+                        setQuestionNum(0);
+                        setSelectedSido("none");
+                        setSelectedSigungu("none");
+                      }}
+                    >
+                      이전으로 돌아가기
+                    </button>
+                  </>
                 )}
               </>
             )}

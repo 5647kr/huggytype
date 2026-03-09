@@ -38,7 +38,7 @@ export default function Detail() {
 
   if (isLoading) {
     return (
-      <div className="min-h-[calc(100vh-91px)] col-span-full flex justify-center items-center">
+      <div className="min-h-[calc(100vh-111px)] col-span-full flex justify-center items-center">
         <Loading />
       </div>
     );

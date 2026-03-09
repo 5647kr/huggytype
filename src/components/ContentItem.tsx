@@ -1,4 +1,13 @@
-import { Cake, Heart, Image, VenusAndMars, WeightTilde } from "lucide-react";
+import {
+  Cake,
+  CircleQuestionMark,
+  Heart,
+  Image,
+  Mars,
+  Venus,
+  VenusAndMars,
+  WeightTilde,
+} from "lucide-react";
 import { useWishListStore } from "../store/wishListStore";
 import { useState } from "react";
 
@@ -60,8 +69,14 @@ export default function ContentItem(props: ContentData) {
             <p>{props.weight}</p>
           </li>
           <li className="text-[#D9C5A0] flex gap-2.5 text-sm items-center">
-            <VenusAndMars className="w-3.5 h-3.5 aspect-square" />
-            <p>{props.sexCd === "M" ? "수컷" : "암컷"}</p>
+            {props.sexCd === "M" ? (
+              <Mars className="w-3.5 h-3.5 aspect-square" />
+            ) : props.sexCd === "F" ? (
+              <Venus className="w-3.5 h-3.5 aspect-square" />
+            ) : (
+              <CircleQuestionMark className="w-3.5 h-3.5 aspect-square" />
+            )}
+            <p>{props.sexCd === "M" ? "수컷" : props.sexCd === "F" ? "암컷" : "알 수 없음"}</p>
           </li>
         </ul>
       </div>

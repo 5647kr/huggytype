@@ -11,9 +11,15 @@ import { Funnel } from "lucide-react";
 export default function Home() {
   const filterState = useFilterStore((state) => state.filterState);
   const [applyFilter, setApplyFilter] = useState(filterState);
+  const [activeFilter, setActiveFilter] = useState(false);
+
+  const handleActiveFilter = () => {
+    setActiveFilter((activeFilter) => !activeFilter);
+  };
 
   const handleApplyFilter = () => {
     setApplyFilter(filterState);
+    handleActiveFilter();
   };
 
   const { data, hasNextPage, isFetchingNextPage, fetchNextPage, isLoading } =
@@ -32,8 +38,8 @@ export default function Home() {
   // 초기 진입 로딩 화면
   if (isLoading) {
     return (
-      <div className="min-h-[calc(100vh-91px)] col-span-full sm:col-[2/8] lg:col-[3/11] flex justify-center items-center">
-        <strong>데이터 불러오는 중...</strong>
+      <div className="min-h-[calc(100vh-111px)] col-span-full sm:col-[2/8] lg:col-[3/11] flex justify-center items-center">
+        <Loading />
       </div>
     );
   }
@@ -41,10 +47,23 @@ export default function Home() {
   return (
     <>
       <section className="col-span-full sm:col-[2/8] lg:col-[3/11]">
-        <button>
-          <Funnel />
-        </button>
-        <FilterForm handleApplyFilter={handleApplyFilter} />
+        <div className="flex items-center text-[#CC8E6B] mt-10 justify-between">
+          <h1 className="text-xl font-bold">사지말고 입양하세요.</h1>
+          <button
+            type="button"
+            className="cursor-pointer"
+            onClick={handleActiveFilter}
+          >
+            <Funnel />
+          </button>
+        </div>
+
+        {activeFilter && (
+          <FilterForm
+            handleApplyFilter={handleApplyFilter}
+            handleActiveFilter={handleActiveFilter}
+          />
+        )}
       </section>
 
       <section className="col-span-full sm:col-[2/8] lg:col-[3/11] mt-10">
@@ -64,9 +83,13 @@ export default function Home() {
       </section>
 
       {hasNextPage && (
-        <div ref={ref} className="col-span-full flex justify-center py-5">
-          <Loading />
-        </div>
+        <>
+          <div ref={ref} className="col-span-full flex justify-center py-5">
+            <span className="text-[#CC8E6B] text-base font-normal">
+              불러오는 중...
+            </span>
+          </div>
+        </>
       )}
     </>
   );
