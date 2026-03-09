@@ -1,7 +1,96 @@
-export default function Home () {
+import { useInView } from "react-intersection-observer";
+import ContentItem from "../../components/ContentItem";
+import { useInfiniteQueryHook } from "../../hook/useQueryHook";
+import Loading from "../../components/Loading";
+import { useEffect, useState } from "react";
+import FilterForm from "../../components/FilterForm";
+import { Link } from "react-router";
+import { useFilterStore } from "../../store/filterStore";
+import { Funnel } from "lucide-react";
+
+export default function Home() {
+  const filterState = useFilterStore((state) => state.filterState);
+  const [applyFilter, setApplyFilter] = useState(filterState);
+  const [activeFilter, setActiveFilter] = useState(false);
+
+  const handleActiveFilter = () => {
+    setActiveFilter((activeFilter) => !activeFilter);
+  };
+
+  const handleApplyFilter = () => {
+    setApplyFilter(filterState);
+    handleActiveFilter();
+  };
+
+  const { data, hasNextPage, isFetchingNextPage, fetchNextPage, isLoading } =
+    useInfiniteQueryHook({ applyFilter });
+
+  const content = data?.pages.flatMap((page) => page.items?.item || []) || [];
+
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (inView && hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  }, [inView]);
+
+  // 초기 진입 로딩 화면
+  if (isLoading) {
+    return (
+      <div className="min-h-[calc(100vh-111px)] col-span-full sm:col-[2/8] lg:col-[3/11] flex justify-center items-center">
+        <Loading />
+      </div>
+    );
+  }
+
   return (
-    <div className="max-w-7xl mx-auto px-4 md:px-8 py-8">
-      <h1>Home Component</h1>
-    </div>
+    <>
+      <section className="col-span-full sm:col-[2/8] lg:col-[3/11]">
+        <div className="flex items-center text-[#CC8E6B] mt-10 justify-between">
+          <h1 className="text-xl font-bold">사지말고 입양하세요.</h1>
+          <button
+            type="button"
+            className="cursor-pointer"
+            onClick={handleActiveFilter}
+          >
+            <Funnel />
+          </button>
+        </div>
+
+        {activeFilter && (
+          <FilterForm
+            handleApplyFilter={handleApplyFilter}
+            handleActiveFilter={handleActiveFilter}
+          />
+        )}
+      </section>
+
+      <section className="col-span-full sm:col-[2/8] lg:col-[3/11] mt-10">
+        {content && content.length > 0 ? (
+          <ul className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-5">
+            {content.map((item) => (
+              <li key={item.desertionNo}>
+                <Link to={`detail/${item.desertionNo}`}>
+                  <ContentItem {...item} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div>검색 결과가 없습니다.</div>
+        )}
+      </section>
+
+      {hasNextPage && (
+        <>
+          <div ref={ref} className="col-span-full flex justify-center py-5">
+            <span className="text-[#CC8E6B] text-base font-normal">
+              불러오는 중...
+            </span>
+          </div>
+        </>
+      )}
+    </>
   );
 }
