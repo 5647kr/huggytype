@@ -27,9 +27,6 @@ export default async function fetchDatas({
   const BASE_URL = `${API_URL}${path}?serviceKey=${API_KEY}&_type=json&numOfRows=${pageNum}&pageNo=${page}`;
   const url = new URL(BASE_URL);
 
-  console.log(selectedSido);
-  console.log(selectedSigungu);
-
   if (sido) {
     url.searchParams.append("upr_cd", sido);
   }
@@ -67,8 +64,6 @@ export default async function fetchDatas({
       }
     }
   }
-
-  console.log(url.toString());
 
   const response = await fetch(url.toString());
 

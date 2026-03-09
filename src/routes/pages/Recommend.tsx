@@ -318,8 +318,6 @@ export default function Recommend() {
     })),
   });
 
-  console.log(selectedSido);
-
   // 전체 로딩 완료
   const isAllLoading = breedResults.some((result) => result.isLoading);
 
